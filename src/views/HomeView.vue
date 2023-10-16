@@ -141,7 +141,10 @@ export default {
         <h4 class="how-it-works-title">{{ how.title }}</h4>
         <p class="how-it-works-copy">{{ how.copy }}</p>
       </div>
-      <AppButton text="Create your own plan" class="hero-button how-it-works-button" />
+      <AppButton
+        text="Create your own plan"
+        class="hero-button how-it-works-button"
+      />
     </section>
   </div>
 </template>

@@ -1,6 +1,12 @@
 <script>
+import AppFooter from './components/persistant/AppFooter.vue';
+
 export default {
   name: 'App',
+
+  components: {
+    AppFooter,
+  },
 };
 </script>
 
@@ -8,6 +14,8 @@ export default {
   <main>
     <RouterView />
   </main>
+
+  <AppFooter />
 </template>
 
 <style lang="scss">
