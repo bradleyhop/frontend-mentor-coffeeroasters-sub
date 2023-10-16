@@ -1,39 +1,42 @@
 // TODO: Add clamp for font-size and line-height
 
 @mixin title-alt-big {
-  font-family: 'Fraunces Black', serif;
+  font-family: 'Fraunces', serif;
   font-size: clamp(40px, 100px, 150px);
   line-height: 72px;
   text-transform: lowercase;
 }
 
 @mixin header-1 {
-  font-family: 'Fraunces Black', serif;
+  font-family: 'Fraunces', serif;
   font-size: clamp(2.5rem, calc(1rem + 5vw), 4.5rem);
-  line-height: 1;
   font-weight: 900;
+  line-height: 1;
 }
 
 @mixin header-2 {
-  font-family: 'Fraunces Black', serif;
+  font-family: 'Fraunces', serif;
   font-size: clamp(1.75rem, calc(1rem + 1vw), 2.5rem);
+  font-weight: 900;
   line-height: 1.5;
 }
 
 @mixin header-3 {
-  font-family: 'Fraunces Black', serif;
-  font-size: 32px;
-  line-height: 36px;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.7rem, calc(1rem + 1vw), 2rem);
+  font-weight: 900;
+  line-height: 1.13;
 }
 
 @mixin header-4 {
-  font-family: 'Fraunces Black', serif;
+  font-family: 'Fraunces', serif;
   font-size: 1.5rem;
+  font-weight: 900;
   line-height: 1.33;
 }
 
 @mixin app-body {
-  font-family: 'Barlow Regular', sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-size: clamp(0.94rem, 0.94rem + 1vw, 1rem);
   line-height: 1.66;
 }

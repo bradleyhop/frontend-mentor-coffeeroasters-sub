@@ -31,6 +31,24 @@ export default {
           copy: 'We cover the cost and coffee is delivered fast. Peak freshness: guaranteed.',
         },
       ]),
+      // how it works card content
+      howItWorks: Object.freeze([
+        {
+          numb: '01',
+          title: 'Pick your coffee',
+          copy: 'Select from our evolving range of artisan coffees. Our beans are ethically sourced and we pay fair prices for them. There are new coffees in all profiles every month for you to try out.',
+        },
+        {
+          numb: '02',
+          title: 'Choose the frequency',
+          copy: 'Customize your order frequency, quantity, even your roast style and grind type. Pause, skip or cancel your subscription with no commitment through our online portal.',
+        },
+        {
+          numb: '03',
+          title: 'Receive and enjoy!',
+          copy: 'We ship your package within 48 hours, freshly roasted. Sit back and enjoy award-winning world-class coffees curated to provide a distinct tasting experience.',
+        },
+      ]),
     };
   },
 };
@@ -67,8 +85,9 @@ export default {
       <div class="hero-content-container">
         <h1 class="main-heading">Great coffee made simple.</h1>
         <p class="main-paragraph">
-          Start your mornings with the world’s best coffees. Try our expertly curated artisa coffees
-          from our best roasters delivered directly to your door, at your schedule.
+          Start your mornings with the world’s best coffees. Try our expertly
+          curated artisa coffees from our best roasters delivered directly to
+          your door, at your schedule.
         </p>
         <AppButton text="Create your own plan" class="hero-button" />
       </div>
@@ -92,13 +111,21 @@ export default {
         <div class="why-us-content-container">
           <h2 class="why-us-heading">Why choose us?</h2>
           <p class="why-us-paragraph">
-            A large part of our role is choosing which particular coffees will be featured in our
-            range. This means working closely with the best coffee growers to give you a more
-            impactful experience on every level.
+            A large part of our role is choosing which particular coffees will
+            be featured in our range. This means working closely with the best
+            coffee growers to give you a more impactful experience on every
+            level.
           </p>
           <div class="benefits-card-container">
-            <div v-for="benefit in benefits" :key="benefit.title" class="benefit-card">
-              <img :src="`./src/assets/img/home/desktop/${benefit.img}`" class="benefit-img" />
+            <div
+              v-for="benefit in benefits"
+              :key="benefit.title"
+              class="benefit-card"
+            >
+              <img
+                :src="`./src/assets/img/home/desktop/${benefit.img}`"
+                class="benefit-img"
+              />
               <h3 class="benefit-title">{{ benefit.title }}</h3>
               <p class="benefit-copy">{{ benefit.copy }}</p>
             </div>
@@ -109,6 +136,12 @@ export default {
 
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
+      <div v-for="how in howItWorks" :key="how.numb" class="how-it-works-card">
+        <h3 class="how-it-works-numb">{{ how.numb }}</h3>
+        <h4 class="how-it-works-title">{{ how.title }}</h4>
+        <p class="how-it-works-copy">{{ how.copy }}</p>
+      </div>
+      <AppButton text="Create your own plan" class="hero-button how-it-works-button" />
     </section>
   </div>
 </template>
@@ -178,7 +211,6 @@ export default {
 }
 .coffee-name {
   @include header-4;
-  font-weight: 900;
   margin-bottom: 1rem;
 }
 
@@ -212,7 +244,6 @@ export default {
 .why-us-heading {
   @include header-2;
   color: $light-cream;
-  font-weight: 900;
   margin-bottom: 1.5rem;
 }
 
@@ -243,7 +274,6 @@ export default {
 
 .benefit-title {
   @include header-4;
-  font-weight: 900;
   margin-bottom: 1.5rem;
 }
 
@@ -253,5 +283,39 @@ export default {
 
 .how-it-works-container {
   text-align: center;
+}
+
+.how-it-works-heading {
+  @include header-2;
+  color: $grey;
+  margin-bottom: 5rem;
+}
+
+.how-it-works-card {
+  margin: 0 1.5rem 3.5rem 1.5rem;
+}
+
+.how-it-works-numb {
+  // same for all screen sizes
+  color: $pale-orange;
+  font-family: 'Fraunces', serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.how-it-works-title {
+  @include header-3;
+  margin-bottom: 1.5rem;
+}
+
+.how-it-works-copy {
+  @include app-body;
+}
+
+.how-it-works-button {
+  width: 13.56rem;
+  margin-bottom: 7.5rem;
 }
 </style>
