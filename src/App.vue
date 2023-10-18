@@ -27,4 +27,8 @@ body {
   background-color: $light-cream;
   color: $dark-grey-blue;
 }
+
+main {
+  padding: 0rem 1.5rem;
+}
 </style>

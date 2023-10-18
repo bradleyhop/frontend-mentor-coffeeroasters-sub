@@ -150,37 +150,6 @@ export default {
 </template>
 
 <style lang="scss">
-.home-container {
-  padding: 0rem 1.5rem;
-}
-
-.hero-container {
-  border-radius: 0.625rem;
-  text-align: center;
-  background-color: #a2a2a2;
-  margin: 2.5rem 0 7.5rem 0;
-  min-height: 31.25rem;
-  display: grid;
-
-  /* displays content over image */
-  & > * {
-    grid-column: 1 / 1;
-    grid-row: 1 / 1;
-  }
-}
-
-.hero-img {
-  border-radius: 0.625rem;
-  object-fit: cover;
-  height: 100%;
-}
-
-.hero-content-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .main-heading {
   @include header-1;
   color: $light-cream;
