@@ -1,3 +1,6 @@
+@import './typography';
+@import './color';
+
 /*
  * Styling for the hero section of pages
  */
@@ -25,4 +28,36 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/*
+ * Styling for how-it-works sections on main and plans views
+ */
+.how-it-works-heading {
+  @include header-2;
+  color: $grey;
+  margin-bottom: 5rem;
+}
+
+.how-it-works-card {
+  margin: 0 1.5rem 3.5rem 1.5rem;
+}
+
+.how-it-works-numb {
+  // same for all screen sizes
+  color: $pale-orange;
+  font-family: 'Fraunces', serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.how-it-works-title {
+  @include header-3;
+  margin-bottom: 1.5rem;
+}
+
+.how-it-works-copy {
+  @include app-body;
 }

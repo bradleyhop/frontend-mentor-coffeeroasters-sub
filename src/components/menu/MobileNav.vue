@@ -36,7 +36,7 @@ export default {
         >
       </li>
       <li class="mobile-nav-link">
-        <RouterLink to="/plans" @click="toggleMenu = !toggleMenu"
+        <RouterLink to="/createplan" @click="toggleMenu = !toggleMenu"
           >Create Your Plan</RouterLink
         >
       </li>

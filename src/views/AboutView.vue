@@ -4,6 +4,7 @@ export default {
 
   data() {
     return {
+      // location content
       locations: Object.freeze([
         {
           img: './src/assets/img/about/desktop/illustration-uk.svg',
@@ -163,7 +164,7 @@ export default {
         :key="location"
         class="location-container"
       >
-        <img :src="location.img" :alt="location.country" class="location-img"/>
+        <img :src="location.img" :alt="location.country" class="location-img" />
         <h3 class="location-heading">{{ location.country }}</h3>
         <p class="location-paragraph">
           {{ location.street }}<br />

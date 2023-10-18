@@ -2,6 +2,8 @@
 import AppButton from '@/components/AppButton.vue';
 // coffee collection as list; more prone to future changes
 import coffees from '@/assets/data/coffeeCollection.js';
+// how it works steps
+import howItWorks from '@/assets/data/howItWorks.js';
 
 export default {
   name: 'HomeView',
@@ -13,6 +15,7 @@ export default {
   data() {
     return {
       coffeCollection: Object.freeze(coffees),
+      steps: Object.freeze(howItWorks),
       // why us card content
       benefits: Object.freeze([
         {
@@ -29,24 +32,6 @@ export default {
           img: 'icon-truck.svg',
           title: 'Free shipping',
           copy: 'We cover the cost and coffee is delivered fast. Peak freshness: guaranteed.',
-        },
-      ]),
-      // how it works card content
-      howItWorks: Object.freeze([
-        {
-          numb: '01',
-          title: 'Pick your coffee',
-          copy: 'Select from our evolving range of artisan coffees. Our beans are ethically sourced and we pay fair prices for them. There are new coffees in all profiles every month for you to try out.',
-        },
-        {
-          numb: '02',
-          title: 'Choose the frequency',
-          copy: 'Customize your order frequency, quantity, even your roast style and grind type. Pause, skip or cancel your subscription with no commitment through our online portal.',
-        },
-        {
-          numb: '03',
-          title: 'Receive and enjoy!',
-          copy: 'We ship your package within 48 hours, freshly roasted. Sit back and enjoy award-winning world-class coffees curated to provide a distinct tasting experience.',
         },
       ]),
     };
@@ -136,10 +121,10 @@ export default {
 
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
-      <div v-for="how in howItWorks" :key="how.numb" class="how-it-works-card">
-        <h3 class="how-it-works-numb">{{ how.numb }}</h3>
-        <h4 class="how-it-works-title">{{ how.title }}</h4>
-        <p class="how-it-works-copy">{{ how.copy }}</p>
+      <div v-for="step in steps" :key="step.numb" class="how-it-works-card">
+        <h3 class="how-it-works-numb">{{ step.numb }}</h3>
+        <h4 class="how-it-works-title">{{ step.title }}</h4>
+        <p class="how-it-works-copy">{{ step.copy }}</p>
       </div>
       <AppButton
         text="Create your own plan"
@@ -255,35 +240,6 @@ export default {
 
 .how-it-works-container {
   text-align: center;
-}
-
-.how-it-works-heading {
-  @include header-2;
-  color: $grey;
-  margin-bottom: 5rem;
-}
-
-.how-it-works-card {
-  margin: 0 1.5rem 3.5rem 1.5rem;
-}
-
-.how-it-works-numb {
-  // same for all screen sizes
-  color: $pale-orange;
-  font-family: 'Fraunces', serif;
-  font-size: 4.5rem;
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 1.5rem;
-}
-
-.how-it-works-title {
-  @include header-3;
-  margin-bottom: 1.5rem;
-}
-
-.how-it-works-copy {
-  @include app-body;
 }
 
 .how-it-works-button {
