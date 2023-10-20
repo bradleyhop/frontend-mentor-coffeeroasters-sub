@@ -1,6 +1,8 @@
 <script>
 // how it works steps
 import howItWorks from '@/assets/data/howItWorks.js';
+// plan steps
+import planSelections from '@/assets/data/planSelections.js';
 
 export default {
   name: 'CreatePlan',
@@ -8,6 +10,7 @@ export default {
   data() {
     return {
       steps: Object.freeze(howItWorks),
+      planSelections: Object.freeze(planSelections),
     };
   },
 };
@@ -59,7 +62,34 @@ export default {
       </div>
     </section>
 
-    <section class="select-plan-container"></section>
+    <section class="select-plan-container">
+      <div
+        v-for="selection in planSelections"
+        :key="selection.numb"
+        class="selection-container"
+      >
+        <details class="select-plan-details">
+          <summary class="select-plan-summary">
+            <h3 class="question-title">{{ selection.selectionTitle }}</h3>
+            <div class="arrow-container">
+              <img
+                class="arrow-icon"
+                :src="`./src/assets/img/plan/desktop/icon-arrow.svg`"
+                alt="arrow icon indicating selection open or close"
+              />
+            </div>
+          </summary>
+          <div
+            v-for="plan in selection.selections"
+            :key="plan.selections"
+            class="select-plan-selection-container"
+          >
+            <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
+            <p class="select-plan-copy">{{ plan.selectionDescription }}</p>
+          </div>
+        </details>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -90,5 +120,71 @@ export default {
 
 .steps-color {
   color: $white;
+}
+
+.selection-container {
+  margin-bottom: 2.5rem;
+  list-style: none;
+}
+
+.select-plan-details {
+  user-select: none;
+}
+
+.select-plan-summary {
+  cursor: pointer;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.question-title {
+  color: $grey;
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.16;
+  width: 15rem;
+}
+
+.arrow-icon {
+  // rotate arrow on select open
+  transition: all 0.3s ease-in-out;
+}
+
+.select-plan-details[open] .arrow-icon {
+  // rotate arrow on select open
+  transform: rotate(180deg);
+}
+
+.select-plan-selection-container {
+  background-color: $selection-grey;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  min-height: 8.75rem;
+  padding: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  /* selected styling; to change */
+  &:active {
+    background-color: $dark-cyan;
+    color: $white;
+  }
+}
+
+.select-plan-title {
+  @include header-4;
+  margin-bottom: 0.5rem;
+}
+
+.select-plan-copy {
+  @include app-body;
 }
 </style>
