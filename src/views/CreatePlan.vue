@@ -1,8 +1,10 @@
 <script>
 // how it works steps
 import howItWorks from '@/assets/data/howItWorks.js';
-// plan steps
+// plans selection
 import planSelections from '@/assets/data/planSelections.js';
+// accordion class
+import Accordian from '@/assets/js/Accordian.js';
 
 export default {
   name: 'CreatePlan',
@@ -12,6 +14,13 @@ export default {
       steps: Object.freeze(howItWorks),
       planSelections: Object.freeze(planSelections),
     };
+  },
+
+  mounted() {
+    // apply animation to all details content
+    document.querySelectorAll('details').forEach((el) => {
+      new Accordian(el);
+    });
   },
 };
 </script>
@@ -79,13 +88,16 @@ export default {
               />
             </div>
           </summary>
-          <div
-            v-for="plan in selection.selections"
-            :key="plan.selections"
-            class="select-plan-selection-container"
-          >
-            <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
-            <p class="select-plan-copy">{{ plan.selectionDescription }}</p>
+          <!-- next container for animation, see mounted() -->
+          <div class="content-wrapper">
+            <div
+              v-for="plan in selection.selections"
+              :key="plan.selections"
+              class="select-plan-selection-container"
+            >
+              <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
+              <p class="select-plan-copy">{{ plan.selectionDescription }}</p>
+            </div>
           </div>
         </details>
       </div>
@@ -152,12 +164,11 @@ export default {
 }
 
 .arrow-icon {
-  // rotate arrow on select open
+  /* match timing to expansion animation */
   transition: all 0.3s ease-in-out;
 }
 
 .select-plan-details[open] .arrow-icon {
-  // rotate arrow on select open
   transform: rotate(180deg);
 }
 
