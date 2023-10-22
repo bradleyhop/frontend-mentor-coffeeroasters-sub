@@ -11,21 +11,26 @@ export default {
 </script>
 
 <template>
-  <button @click="toggleMenu = !toggleMenu" class="header-btn">
-    <img
-      :src="`./src/assets/img/shared/mobile/icon-hamburger.svg`"
-      v-if="!toggleMenu"
-      alt="mobile menu"
-      class="header-btn-img"
-    />
-    <img
-      :src="`./src/assets/img/shared/mobile/icon-close.svg`"
-      v-else
-      alt="mobile menu"
-      class="header-btn-img"
-    />
-  </button>
-  <nav v-if="toggleMenu" class="mobile-nav-container">
+  <div class="mobile-btn-container">
+    <button @click="toggleMenu = !toggleMenu" class="header-btn">
+      <img
+        v-if="!toggleMenu"
+        :src="`./src/assets/img/shared/mobile/icon-hamburger.svg`"
+        alt="mobile menu open"
+        class="mobile-btn-img"
+      />
+      <img
+        v-else
+        :src="`./src/assets/img/shared/mobile/icon-close.svg`"
+        alt="mobile menu close"
+        class="mobile-btn-img"
+      />
+    </button>
+  </div>
+  <nav
+    class="mobile-nav-container"
+    :class="toggleMenu ? 'active-mobile-menu' : 'hide-mobile-menu'"
+  >
     <ul class="mobile-nav">
       <li class="mobile-nav-link">
         <RouterLink to="/" @click="toggleMenu = !toggleMenu">Home</RouterLink>
@@ -45,13 +50,15 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.mobile-btn-container {
+  height: 1.1rem;
+}
+
 .header-btn {
   cursor: pointer;
 }
 
 .mobile-nav-container {
-  min-height: 36rem;
-  min-width: 100%;
   background: linear-gradient(
     180deg,
     #fefcf7 50%,
@@ -59,8 +66,22 @@ export default {
   );
   position: absolute;
   /* position over body content */
-  top: 5.6rem;
+  top: 5.55rem;
+  min-width: 100vw;
+  min-width: 100dvw;
+  overflow: hidden;
   left: 0;
+  transition: all 0.3s;
+
+  &.hide-mobile-menu {
+    height: 0vh;
+    height: 0dvh;
+  }
+
+  &.active-mobile-menu {
+    height: 90vh;
+    height: 90dvh;
+  }
 }
 
 .mobile-nav {
