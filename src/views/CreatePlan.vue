@@ -13,7 +13,16 @@ export default {
     return {
       steps: Object.freeze(howItWorks),
       planSelections: Object.freeze(planSelections),
+      // user selected plan; filled by @click event selectPlan()
+      customerPlan: {},
     };
+  },
+
+  methods: {
+    // populate customerPan object upon user selection on @click event
+    selectPlan(type, select) {
+      this.customerPlan[type] = select;
+    },
   },
 
   mounted() {
@@ -74,7 +83,7 @@ export default {
     <section class="select-plan-container">
       <div
         v-for="selection in planSelections"
-        :key="selection.numb"
+        :key="selection.id"
         class="selection-container"
       >
         <details class="select-plan-details">
@@ -92,15 +101,44 @@ export default {
           <div class="content-wrapper">
             <div
               v-for="plan in selection.selections"
-              :key="plan.selections"
+              :key="plan.id"
               class="select-plan-selection-container"
-            >
+              :class="{ active: plan.isSelected }"
+              :value="plan.cost"
+              @click="selectPlan(selection.selectionType, plan.selectionName)">
               <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
               <p class="select-plan-copy">{{ plan.selectionDescription }}</p>
             </div>
           </div>
         </details>
       </div>
+    </section>
+
+    <section class="summary-container">
+      <h2 class="summary-title">ORDER SUMMARY</h2>
+      <p class="summary-copy">
+        &ldquo;I drink my coffee as
+        <span class="summary-highlight">{{
+          customerPlan.how ? customerPlan.how : '____'
+        }}</span
+        >, with a
+        <span class="summary-highlight">{{
+          customerPlan.type ? customerPlan.type : '____'
+        }}</span>
+        type of bean.
+        <span class="summary-highlight">{{
+          customerPlan.size ? customerPlan.size : '____'
+        }}</span>
+        ground ala
+        <span class="summary-highlight">{{
+          customerPlan.grind ? customerPlan.grind : '____'
+        }}</span
+        >, sent to me
+        <span class="summary-highlight">{{
+          customerPlan.frequency ? customerPlan.frequency : '____'
+        }}</span
+        >.&rdquo;
+      </p>
     </section>
   </div>
 </template>
@@ -182,12 +220,12 @@ export default {
   &:hover {
     cursor: pointer;
   }
+}
 
-  /* selected styling; to change */
-  &:active {
-    background-color: $dark-cyan;
-    color: $white;
-  }
+/* selected styling; to change */
+.active {
+  background-color: $dark-cyan;
+  color: $white;
 }
 
 .select-plan-title {
@@ -197,5 +235,31 @@ export default {
 
 .select-plan-copy {
   @include app-body;
+}
+
+.summary-container {
+  background-color: $dark-grey;
+  border-radius: 0.625rem;
+  color: $white;
+  padding: 2rem 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.summary-title {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.625;
+  text-transform: uppercase;
+  opacity: 0.5037;
+}
+
+.summary-copy {
+  @include header-4;
+  line-height: 1.66;
+}
+
+.summary-highlight {
+  color: $dark-cyan;
 }
 </style>
