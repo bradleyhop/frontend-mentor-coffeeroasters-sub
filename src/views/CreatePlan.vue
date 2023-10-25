@@ -2,7 +2,7 @@
 // how it works steps
 import howItWorks from '@/assets/data/howItWorks.js';
 // plans selection
-import planSelections from '@/assets/data/planSelections.js';
+import planSelectionsData from '@/assets/data/planSelections.js';
 // accordion class
 import Accordian from '@/assets/js/Accordian.js';
 
@@ -11,8 +11,10 @@ export default {
 
   data() {
     return {
+      // how it works steps
       steps: Object.freeze(howItWorks),
-      planSelections: Object.freeze(planSelections),
+      // plan selection copy, values, and boolean class selection
+      planSelections: planSelectionsData,
       // user selected plan; filled by @click event selectPlan()
       customerPlan: {},
     };
@@ -22,6 +24,15 @@ export default {
     // populate customerPan object upon user selection on @click event
     selectPlan(type, select) {
       this.customerPlan[type] = select;
+    },
+
+    // toggle .activeChoice on user select
+    toggleActiveSelect(questionId, selectionId) {
+      for (let i = 0; i < this.planSelections[questionId].selections.length; i++) {
+        this.planSelections[questionId].selections[i].isSelected = false;
+      }
+
+      this.planSelections[questionId].selections[selectionId].isSelected = true;
     },
   },
 
@@ -98,14 +109,18 @@ export default {
             </div>
           </summary>
           <!-- next container for animation, see mounted() -->
-          <div class="content-wrapper">
+          <div class="content-wrapper" :id="`planDetails${selection.id}`">
             <div
               v-for="plan in selection.selections"
               :key="plan.id"
               class="select-plan-selection-container"
-              :class="{ active: plan.isSelected }"
+              :class="{ activeChoice: plan.isSelected }"
               :value="plan.cost"
-              @click="selectPlan(selection.selectionType, plan.selectionName)">
+              @click="
+                selectPlan(selection.selectionType, plan.selectionName),
+                  toggleActiveSelect(selection.id, plan.id)
+              "
+            >
               <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
               <p class="select-plan-copy">{{ plan.selectionDescription }}</p>
             </div>
@@ -222,8 +237,7 @@ export default {
   }
 }
 
-/* selected styling; to change */
-.active {
+.activeChoice {
   background-color: $dark-cyan;
   color: $white;
 }
