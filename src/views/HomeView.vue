@@ -74,7 +74,9 @@ export default {
           curated artisa coffees from our best roasters delivered directly to
           your door, at your schedule.
         </p>
-        <AppButton text="Create your own plan" class="hero-button" />
+        <RouterLink to="/createplan">
+          <AppButton text="Create your own plan" />
+        </RouterLink>
       </div>
     </section>
 
@@ -126,10 +128,12 @@ export default {
         <h4 class="how-it-works-title">{{ step.title }}</h4>
         <p class="how-it-works-copy">{{ step.copy }}</p>
       </div>
-      <AppButton
-        text="Create your own plan"
-        class="hero-button how-it-works-button"
-      />
+      <RouterLink to="/createplan">
+        <AppButton
+          text="Create your own plan"
+          class="how-it-works-button"
+        />
+      </RouterLink>
     </section>
   </div>
 </template>
@@ -146,10 +150,6 @@ export default {
   color: $light-cream;
   padding: 0 1.5rem 1.5rem 1.5rem;
   opacity: 0.8;
-}
-
-.hero-button {
-  margin: 0 3.44rem;
 }
 
 .collection-container {
@@ -243,7 +243,6 @@ export default {
 }
 
 .how-it-works-button {
-  width: 13.56rem;
   margin-bottom: 7.5rem;
 }
 </style>

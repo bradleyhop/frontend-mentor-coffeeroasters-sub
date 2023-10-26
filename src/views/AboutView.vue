@@ -1,6 +1,12 @@
 <script>
+import AppButton from '@/components/AppButton.vue';
+
 export default {
   name: 'AboutView',
+
+  components: {
+    AppButton,
+  },
 
   data() {
     return {
@@ -72,7 +78,9 @@ export default {
           been dedicated to bring the perfect cup - from bean to brew - in every
           shipment.
         </p>
-        <AppButton text="Create your own plan" class="hero-button" />
+        <RouterLink to="/createplan">
+          <AppButton text="Create your own plan" />
+        </RouterLink>
       </div>
     </section>
 
