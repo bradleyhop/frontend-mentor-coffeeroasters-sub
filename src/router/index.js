@@ -3,6 +3,15 @@ import HomeView from '@/views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      // native-like behavior with forward/back buttons
+      return savedPosition;
+    } else {
+      // jump to top of page view on navigation
+      return { top: 0 };
+    }
+  },
   routes: [
     {
       path: '/',

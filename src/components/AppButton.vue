@@ -17,7 +17,6 @@ export default {
 
 <style lang="scss">
 .app-button {
-  height: 3.5rem;
   background-color: $dark-cyan;
   border-radius: 0.375rem;
   cursor: pointer;
@@ -26,6 +25,7 @@ export default {
   font-size: 1.125rem;
   font-weight: 900;
   line-height: 1.39;
+  padding: 0.94rem 1.94rem 1rem 1.94rem;
 
   &:hover {
     background-color: $light-cyan;
