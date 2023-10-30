@@ -28,11 +28,48 @@ export default {
 
     // toggle .activeChoice on user select
     toggleActiveSelect(questionId, selectionId) {
-      for (let i = 0; i < this.planSelections[questionId].selections.length; i++) {
+      for (
+        let i = 0;
+        i < this.planSelections[questionId].selections.length;
+        i++
+      ) {
         this.planSelections[questionId].selections[i].isSelected = false;
       }
 
       this.planSelections[questionId].selections[selectionId].isSelected = true;
+    },
+  },
+
+  watch: {
+    'customerPlan.how': {
+      handler() {
+        const grindEl = document.getElementById('grind');
+
+        // disable grind question, close section if open, and clear any
+        // selections the user made before selecting coffee type
+
+        if (this.customerPlan.how === 'Capsule') {
+          // add class to disable user selection
+          grindEl.classList.add('disabled');
+          // close grind selection details if open
+          if (grindEl.hasAttribute('open')) {
+            grindEl.removeAttribute('open');
+          }
+          if (this.customerPlan.grind) {
+            // remove grind property from customerPlan
+            delete this.customerPlan.grind;
+            // remove any active class selections from coffee array object
+            // 'grind'; isSelected property will only be true if user made a
+            // selection
+            this.planSelections[3].selections.map((el) => {
+              el.isSelected = false;
+            });
+          }
+        } else {
+          // remove class to enable user selection
+          grindEl.classList.remove('disabled');
+        }
+      },
     },
   },
 
@@ -97,7 +134,7 @@ export default {
         :key="selection.id"
         class="selection-container"
       >
-        <details class="select-plan-details">
+        <details class="select-plan-details" :id="selection.selectionType">
           <summary class="select-plan-summary">
             <h3 class="question-title">{{ selection.selectionTitle }}</h3>
             <div class="arrow-container">
@@ -132,11 +169,16 @@ export default {
     <section class="summary-container">
       <h2 class="summary-title">ORDER SUMMARY</h2>
       <p class="summary-copy">
-        &ldquo;I drink my coffee as
+        &ldquo;I drink my coffee
+        {{ customerPlan.how == 'Capsule' ? 'using' : 'as' }}
         <span class="summary-highlight">{{
-          customerPlan.how ? customerPlan.how : '____'
-        }}</span
-        >, with a
+          customerPlan.how
+            ? customerPlan.how === 'Capsule'
+              ? 'Capsules'
+              : customerPlan.how
+            : '____'
+        }}</span>
+        , with a
         <span class="summary-highlight">{{
           customerPlan.type ? customerPlan.type : '____'
         }}</span>
@@ -144,9 +186,13 @@ export default {
         <span class="summary-highlight">{{
           customerPlan.size ? customerPlan.size : '____'
         }}</span>
-        ground ala
+        {{ customerPlan.how == 'Capsule' ? '' : 'ground ala' }}
         <span class="summary-highlight">{{
-          customerPlan.grind ? customerPlan.grind : '____'
+          customerPlan.how == 'Capsule'
+            ? ''
+            : customerPlan.grind
+            ? customerPlan.grind
+            : '____'
         }}</span
         >, sent to me
         <span class="summary-highlight">{{
@@ -194,6 +240,17 @@ export default {
 
 .select-plan-details {
   user-select: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+  user-select: none; /* prevents text selection */
+  pointer-events: none; /* prevents click events */
+
+  /* indicate disabled state */
+  & > summary {
+    opacity: 0.2;
+  }
 }
 
 .select-plan-summary {

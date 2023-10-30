@@ -138,7 +138,7 @@ const planSelections = [
         selectionName: 'Every 3 weeks',
         selectionDescription:
           '$22.50 per shipment. Includes free priority shipping.',
-        cost: 22.50,
+        cost: 22.5,
       },
     ],
   },

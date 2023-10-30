@@ -129,10 +129,7 @@ export default {
         <p class="how-it-works-copy">{{ step.copy }}</p>
       </div>
       <RouterLink to="/createplan">
-        <AppButton
-          text="Create your own plan"
-          class="how-it-works-button"
-        />
+        <AppButton text="Create your own plan" class="how-it-works-button" />
       </RouterLink>
     </section>
   </div>
