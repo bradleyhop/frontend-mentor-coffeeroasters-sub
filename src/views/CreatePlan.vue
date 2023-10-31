@@ -5,9 +5,15 @@ import howItWorks from '@/assets/data/howItWorks.js';
 import planSelectionsData from '@/assets/data/planSelections.js';
 // accordion class
 import Accordian from '@/assets/js/Accordian.js';
+// app button for checkout
+import AppButton from '@/components/AppButton.vue';
 
 export default {
   name: 'CreatePlan',
+
+  components: {
+    AppButton,
+  },
 
   data() {
     return {
@@ -24,17 +30,14 @@ export default {
     // populate customerPan object upon user selection on @click event
     selectPlan(type, select) {
       this.customerPlan[type] = select;
+      console.log(this.customerPlan);
     },
 
     // toggle .activeChoice on user select
     toggleActiveSelect(questionId, selectionId) {
-      for (
-        let i = 0;
-        i < this.planSelections[questionId].selections.length;
-        i++
-      ) {
-        this.planSelections[questionId].selections[i].isSelected = false;
-      }
+      this.planSelections[questionId].selections.map((el) => {
+        el.isSelected = false;
+      });
 
       this.planSelections[questionId].selections[selectionId].isSelected = true;
     },
@@ -42,11 +45,10 @@ export default {
 
   watch: {
     'customerPlan.how': {
+      // disable grind question, close section if open, and clear any
+      //  selections the user made before selecting coffee type
       handler() {
         const grindEl = document.getElementById('grind');
-
-        // disable grind question, close section if open, and clear any
-        // selections the user made before selecting coffee type
 
         if (this.customerPlan.how === 'Capsule') {
           // add class to disable user selection
@@ -70,6 +72,34 @@ export default {
           grindEl.classList.remove('disabled');
         }
       },
+    },
+    // id="CheckoutBtn"
+    customerPlan: {
+      handler() {
+        if (
+          this.customerPlan.how === 'Capsule' &&
+          this.customerPlan.type &&
+          this.customerPlan.size &&
+          this.customerPlan.frequency
+        ) {
+          // do not check for 'grind' property if user selects 'Capsule'
+          document.getElementById('CheckoutBtn').removeAttribute('disabled');
+        } else if (
+          this.customerPlan.how !== 'Capsule' &&
+          this.customerPlan.how &&
+          this.customerPlan.type &&
+          this.customerPlan.size &&
+          this.customerPlan.grind &&
+          this.customerPlan.frequency
+        ) {
+          // check for all properties
+          document.getElementById('CheckoutBtn').removeAttribute('disabled');
+        } else {
+          // disable button for checkout
+          document.getElementById('CheckoutBtn').setAttribute('disabled', '');
+        }
+      },
+      deep: true,
     },
   },
 
@@ -170,25 +200,25 @@ export default {
       <h2 class="summary-title">ORDER SUMMARY</h2>
       <p class="summary-copy">
         &ldquo;I drink my coffee
-        {{ customerPlan.how == 'Capsule' ? 'using' : 'as' }}
+        {{ customerPlan.how === 'Capsule' ? 'using' : 'as' }}
         <span class="summary-highlight">{{
           customerPlan.how
             ? customerPlan.how === 'Capsule'
               ? 'Capsules'
               : customerPlan.how
             : '____'
-        }}</span>
-        , with a
+        }}</span
+        >, with a
         <span class="summary-highlight">{{
           customerPlan.type ? customerPlan.type : '____'
         }}</span>
         type of bean.
         <span class="summary-highlight">{{
           customerPlan.size ? customerPlan.size : '____'
-        }}</span>
-        {{ customerPlan.how == 'Capsule' ? '' : 'ground ala' }}
-        <span class="summary-highlight">{{
-          customerPlan.how == 'Capsule'
+        }}</span
+        >{{ customerPlan.how === 'Capsule' ? '' : ' ground ala '
+        }}<span class="summary-highlight">{{
+          customerPlan.how === 'Capsule'
             ? ''
             : customerPlan.grind
             ? customerPlan.grind
@@ -201,6 +231,15 @@ export default {
         >.&rdquo;
       </p>
     </section>
+
+    <div class="checkout-btn-container">
+      <AppButton
+        class="checkout-btn"
+        text="Create My Plan!"
+        id="CheckoutBtn"
+        disabled
+      />
+    </div>
   </div>
 </template>
 
@@ -332,5 +371,10 @@ export default {
 
 .summary-highlight {
   color: $dark-cyan;
+}
+
+.checkout-btn-container {
+  text-align: center;
+  margin-bottom: 7.5rem;
 }
 </style>
