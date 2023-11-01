@@ -5,14 +5,20 @@ import howItWorks from '@/assets/data/howItWorks.js';
 import planSelectionsData from '@/assets/data/planSelections.js';
 // accordion class
 import Accordian from '@/assets/js/Accordian.js';
+// summary paragraph text
+import OrderSummary from '@/components/OrderSummary.vue';
 // app button for checkout
 import AppButton from '@/components/AppButton.vue';
+// checkout modal
+import CheckoutModal from '@/components/CheckoutModal.vue';
 
 export default {
   name: 'CreatePlan',
 
   components: {
     AppButton,
+    OrderSummary,
+    CheckoutModal,
   },
 
   data() {
@@ -23,6 +29,8 @@ export default {
       planSelections: planSelectionsData,
       // user selected plan; filled by @click event selectPlan()
       customerPlan: {},
+      // hide modal by default
+      showModal: false,
     };
   },
 
@@ -198,38 +206,13 @@ export default {
 
     <section class="summary-container">
       <h2 class="summary-title">ORDER SUMMARY</h2>
-      <p class="summary-copy">
-        &ldquo;I drink my coffee
-        {{ customerPlan.how === 'Capsule' ? 'using' : 'as' }}
-        <span class="summary-highlight">{{
-          customerPlan.how
-            ? customerPlan.how === 'Capsule'
-              ? 'Capsules'
-              : customerPlan.how
-            : '____'
-        }}</span
-        >, with a
-        <span class="summary-highlight">{{
-          customerPlan.type ? customerPlan.type : '____'
-        }}</span>
-        type of bean.
-        <span class="summary-highlight">{{
-          customerPlan.size ? customerPlan.size : '____'
-        }}</span
-        >{{ customerPlan.how === 'Capsule' ? '' : ' ground ala '
-        }}<span class="summary-highlight">{{
-          customerPlan.how === 'Capsule'
-            ? ''
-            : customerPlan.grind
-            ? customerPlan.grind
-            : '____'
-        }}</span
-        >, sent to me
-        <span class="summary-highlight">{{
-          customerPlan.frequency ? customerPlan.frequency : '____'
-        }}</span
-        >.&rdquo;
-      </p>
+      <OrderSummary
+        :how="customerPlan.how"
+        :type="customerPlan.type"
+        :size="customerPlan.size"
+        :grind="customerPlan.grind"
+        :frequency="customerPlan.frequency"
+      />
     </section>
 
     <div class="checkout-btn-container">
@@ -238,7 +221,12 @@ export default {
         text="Create My Plan!"
         id="CheckoutBtn"
         disabled
+        @click="showModal = true"
       />
+
+      <Teleport to="body">
+        <CheckoutModal :show="showModal" @close="showModal = false" />
+      </Teleport>
     </div>
   </div>
 </template>
@@ -362,15 +350,6 @@ export default {
   line-height: 1.625;
   text-transform: uppercase;
   opacity: 0.5037;
-}
-
-.summary-copy {
-  @include header-4;
-  line-height: 1.66;
-}
-
-.summary-highlight {
-  color: $dark-cyan;
 }
 
 .checkout-btn-container {

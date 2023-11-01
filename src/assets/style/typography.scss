@@ -37,6 +37,6 @@
 
 @mixin app-body {
   font-family: 'Barlow', sans-serif;
-  font-size: clamp(0.94rem, 0.94rem + 1vw, 1rem);
-  line-height: 1.66;
+  font-size: clamp(0.9rem, 0.94rem + 1vw, 1rem);
+  line-height: 1.67;
 }
