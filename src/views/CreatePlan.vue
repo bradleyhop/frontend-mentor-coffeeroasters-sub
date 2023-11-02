@@ -1,5 +1,5 @@
 <script>
-// how it works steps
+// how it works steps copy
 import howItWorks from '@/assets/data/howItWorks.js';
 // plans selection
 import planSelectionsData from '@/assets/data/planSelections.js';
@@ -11,6 +11,8 @@ import OrderSummary from '@/components/OrderSummary.vue';
 import AppButton from '@/components/AppButton.vue';
 // checkout modal
 import CheckoutModal from '@/components/CheckoutModal.vue';
+// cart stores
+import { useCustomerPlan } from '@/stores/customerPlan.js';
 
 export default {
   name: 'CreatePlan',
@@ -28,7 +30,9 @@ export default {
       // plan selection copy, values, and boolean class selection
       planSelections: planSelectionsData,
       // user selected plan; filled by @click event selectPlan()
-      customerPlan: {},
+      customerPlan: useCustomerPlan().plan,
+      // add/remove disabled attr to checkout button
+      checkoutBtnDisabled: true,
       // hide modal by default
       showModal: false,
     };
@@ -49,6 +53,34 @@ export default {
 
       this.planSelections[questionId].selections[selectionId].isSelected = true;
     },
+
+    // toggle disabled attribute when all choices are made
+
+    toggleDisabled() {
+      if (
+        this.customerPlan.how === 'Capsule' &&
+        this.customerPlan.type &&
+        this.customerPlan.size &&
+        this.customerPlan.frequency
+      ) {
+        // do not check for 'grind' property if user selects 'Capsule'
+        // document.getElementById('CheckoutBtn').removeAttribute('disabled');
+        this.checkoutBtnDisabled = false;
+      } else if (
+        this.customerPlan.how !== 'Capsule' &&
+        this.customerPlan.how &&
+        this.customerPlan.type &&
+        this.customerPlan.size &&
+        this.customerPlan.grind &&
+        this.customerPlan.frequency
+      ) {
+        // check for all properties
+        this.checkoutBtnDisabled = false;
+      } else {
+        // disable button for checkout
+        this.checkoutBtnDisabled = true;
+      }
+    },
   },
 
   watch: {
@@ -56,6 +88,8 @@ export default {
       // disable grind question, close section if open, and clear any
       //  selections the user made before selecting coffee type
       handler() {
+        // using vanilla JS since accordians are rendered in a loop and we only
+        //  need one group
         const grindEl = document.getElementById('grind');
 
         if (this.customerPlan.how === 'Capsule') {
@@ -81,31 +115,10 @@ export default {
         }
       },
     },
-    // id="CheckoutBtn"
+
     customerPlan: {
       handler() {
-        if (
-          this.customerPlan.how === 'Capsule' &&
-          this.customerPlan.type &&
-          this.customerPlan.size &&
-          this.customerPlan.frequency
-        ) {
-          // do not check for 'grind' property if user selects 'Capsule'
-          document.getElementById('CheckoutBtn').removeAttribute('disabled');
-        } else if (
-          this.customerPlan.how !== 'Capsule' &&
-          this.customerPlan.how &&
-          this.customerPlan.type &&
-          this.customerPlan.size &&
-          this.customerPlan.grind &&
-          this.customerPlan.frequency
-        ) {
-          // check for all properties
-          document.getElementById('CheckoutBtn').removeAttribute('disabled');
-        } else {
-          // disable button for checkout
-          document.getElementById('CheckoutBtn').setAttribute('disabled', '');
-        }
+        this.toggleDisabled();
       },
       deep: true,
     },
@@ -116,6 +129,8 @@ export default {
     document.querySelectorAll('details').forEach((el) => {
       new Accordian(el);
     });
+    // check store for completed user selection
+    this.toggleDisabled();
   },
 };
 </script>
@@ -206,13 +221,7 @@ export default {
 
     <section class="summary-container">
       <h2 class="summary-title">ORDER SUMMARY</h2>
-      <OrderSummary
-        :how="customerPlan.how"
-        :type="customerPlan.type"
-        :size="customerPlan.size"
-        :grind="customerPlan.grind"
-        :frequency="customerPlan.frequency"
-      />
+      <OrderSummary />
     </section>
 
     <div class="checkout-btn-container">
@@ -220,7 +229,7 @@ export default {
         class="checkout-btn"
         text="Create My Plan!"
         id="CheckoutBtn"
-        disabled
+        :disabled="checkoutBtnDisabled"
         @click="showModal = true"
       />
 

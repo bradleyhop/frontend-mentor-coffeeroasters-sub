@@ -3,30 +3,16 @@
  * text for order summary parapgraph
  */
 
+// cart stores
+import { useCustomerPlan } from '@/stores/customerPlan.js';
+
 export default {
   name: 'OrderSummary',
 
-  props: {
-    how: {
-      type: String,
-      required: true,
-    },
-    type: {
-      type: String,
-      required: true,
-    },
-    size: {
-      type: String,
-      required: true,
-    },
-    grind: {
-      type: String,
-      required: false, // b/c of 'Capsule'
-    },
-    frequency: {
-      type: String,
-      required: true,
-    },
+  data() {
+    return {
+      customerPlan: useCustomerPlan().plan,
+    };
   },
 };
 </script>
@@ -34,20 +20,34 @@ export default {
 <template>
   <p class="summary-copy">
     &ldquo;I drink my coffee
-    {{ how === 'Capsule' ? 'using' : 'as' }}
+    {{ customerPlan.how === 'Capsule' ? 'using' : 'as' }}
     <span class="summary-highlight">{{
-      how ? (how === 'Capsule' ? 'Capsules' : how) : '____'
+      customerPlan.how
+        ? customerPlan.how === 'Capsule'
+          ? 'Capsules'
+          : customerPlan.how
+        : '____'
     }}</span
     >, with a
-    <span class="summary-highlight">{{ type ? type : '____' }}</span>
+    <span class="summary-highlight">{{
+      customerPlan.type ? customerPlan.type : '____'
+    }}</span>
     type of bean.
-    <span class="summary-highlight">{{ size ? size : '____' }}</span
-    >{{ how === 'Capsule' ? '' : ' ground ala '
+    <span class="summary-highlight">{{
+      customerPlan.size ? customerPlan.size : '____'
+    }}</span
+    >{{ customerPlan.how === 'Capsule' ? '' : ' ground ala '
     }}<span class="summary-highlight">{{
-      how === 'Capsule' ? '' : grind ? grind : '____'
+      customerPlan.how === 'Capsule'
+        ? ''
+        : customerPlan.grind
+        ? customerPlan.grind
+        : '____'
     }}</span
     >, sent to me
-    <span class="summary-highlight">{{ frequency ? frequency : '____' }}</span
+    <span class="summary-highlight">{{
+      customerPlan.frequency ? customerPlan.frequency : '____'
+    }}</span
     >.&rdquo;
   </p>
 </template>
