@@ -1,11 +1,15 @@
 <script>
 /*
- * modal for checkout
+ * modal for checkout; shown after all required choice is made and user presses
+ * checkout button
  */
 
 // order summary text
 import OrderSummary from '@/components/OrderSummary.vue';
+// app button for checkout
 import AppButton from '@/components/AppButton.vue';
+// cart stores
+import { useCustomerPlan } from '@/stores/customerPlan.js';
 
 export default {
   name: 'CheckoutModal',
@@ -13,6 +17,13 @@ export default {
   components: {
     OrderSummary,
     AppButton,
+  },
+
+  data() {
+    return {
+      // needed for plan total cost
+      customerPlan: useCustomerPlan().plan,
+    };
   },
 
   props: {
@@ -27,12 +38,6 @@ export default {
       <div class="modal-container">
         <div class="modal-header-container" @click="$emit('close')">
           <h1 class="modal-header">Order Summary</h1>
-          <!-- Not sure how user is supposed to close modal without checking
-          out?
-          <button class="modal-default-button" @click="$emit('close')">
-            OK
-          </button>
-          -->
         </div>
 
         <div class="modal-body">
@@ -48,7 +53,7 @@ export default {
 
         <div class="modal-checkout-button-container">
           <AppButton
-            text="Checkout - $ / mo"
+            :text="`Checkout - $${customerPlan.totalCost} / mo`"
             @click="$emit('close')"
             class="modal-checkout-button"
           />
@@ -60,23 +65,24 @@ export default {
 
 <style lang="scss" scoped>
 .modal-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
-  z-index: 9998;
+  z-index: 9001;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
   transition: opacity 0.3s ease;
 }
 
 .modal-container {
-  margin: auto 1.5rem;
   background-color: $light-cream;
   border-radius: 0.5rem;
+  margin: auto 1.5rem;
   transition: all 0.3s ease;
-  z-index: 1;
 }
 
 .modal-header-container {
@@ -107,12 +113,6 @@ export default {
   @include app-body;
   color: $dark-grey-blue;
   margin-bottom: 1.5rem;
-}
-
-.modal-default-button {
-  color: white;
-  right: 0;
-  top: 0;
 }
 
 .modal-checkout-button-container {
