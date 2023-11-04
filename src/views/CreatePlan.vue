@@ -29,8 +29,8 @@ export default {
       steps: Object.freeze(howItWorks),
       // plan selection copy, values, and boolean class selection
       planSelections: planSelectionsData,
-      // user selected plan; filled by @click event selectPlan()
-      customerPlan: useCustomerPlan().plan,
+      // user selected plan in store
+      customerPlan: useCustomerPlan(),
       // add/remove disabled attr to checkout button
       checkoutBtnDisabled: true,
       // hide modal by default
@@ -40,10 +40,12 @@ export default {
 
   methods: {
     // populate customerPan object upon user selection on @click event
-    selectPlan(type, select) {
-      this.customerPlan[type] = select;
-      console.log(this.customerPlan);
-    },
+    /*
+     * customerPlan.setPlan(type, select) {
+     *   this.customerPlan[type] = select;
+     *   // console.log(this.customerPlan);
+     * },
+     */
 
     // toggle .activeChoice on user select
     toggleActiveSelect(questionId, selectionId) {
@@ -57,22 +59,20 @@ export default {
     // toggle disabled attribute when all choices are made
 
     toggleDisabled() {
+      // do not check for 'grind' property if user selects 'Capsule'
       if (
-        this.customerPlan.how === 'Capsule' &&
-        this.customerPlan.type &&
-        this.customerPlan.size &&
-        this.customerPlan.frequency
+        this.customerPlan.plan.how === 'Capsule' &&
+        this.customerPlan.plan.type &&
+        this.customerPlan.plan.size &&
+        this.customerPlan.plan.frequency
       ) {
-        // do not check for 'grind' property if user selects 'Capsule'
-        // document.getElementById('CheckoutBtn').removeAttribute('disabled');
         this.checkoutBtnDisabled = false;
       } else if (
-        this.customerPlan.how !== 'Capsule' &&
-        this.customerPlan.how &&
-        this.customerPlan.type &&
-        this.customerPlan.size &&
-        this.customerPlan.grind &&
-        this.customerPlan.frequency
+        this.customerPlan.plan.how &&
+        this.customerPlan.plan.type &&
+        this.customerPlan.plan.size &&
+        this.customerPlan.plan.grind &&
+        this.customerPlan.plan.frequency
       ) {
         // check for all properties
         this.checkoutBtnDisabled = false;
@@ -84,7 +84,7 @@ export default {
   },
 
   watch: {
-    'customerPlan.how': {
+    'customerPlan.plan.how': {
       // disable grind question, close section if open, and clear any
       //  selections the user made before selecting coffee type
       handler() {
@@ -92,16 +92,16 @@ export default {
         //  need one group
         const grindEl = document.getElementById('grind');
 
-        if (this.customerPlan.how === 'Capsule') {
+        if (this.customerPlan.plan.how === 'Capsule') {
           // add class to disable user selection
           grindEl.classList.add('disabled');
           // close grind selection details if open
           if (grindEl.hasAttribute('open')) {
             grindEl.removeAttribute('open');
           }
-          if (this.customerPlan.grind) {
+          if (this.customerPlan.plan.grind) {
             // remove grind property from customerPlan
-            delete this.customerPlan.grind;
+            delete this.customerPlan.plan.grind;
             // remove any active class selections from coffee array object
             // 'grind'; isSelected property will only be true if user made a
             // selection
@@ -207,7 +207,10 @@ export default {
               :class="{ activeChoice: plan.isSelected }"
               :value="plan.cost"
               @click="
-                selectPlan(selection.selectionType, plan.selectionName),
+                customerPlan.setPlan(
+                  selection.selectionType,
+                  plan.selectionName,
+                ),
                   toggleActiveSelect(selection.id, plan.id)
               "
             >

@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 
 export const useCustomerPlan = defineStore('customerPlan', {
-  state: () => {
-    return {
+  state: () => ({
       plan: {
         how: '',
         type: '',
@@ -10,21 +9,24 @@ export const useCustomerPlan = defineStore('customerPlan', {
         grind: '',
         delivery: '',
         frequency: '',
-        totalCost: 0,
-      },
-    };
-  },
+        totalCost: 1, // placeholder until getters is implemented
+      }
+  }),
 
   getters: {
-    total: () => {
-      // TODO: update logic to change proprty value reactively
-      this.plan.totalCost = 54; // doesn't work yet
-    },
+    // TODO: update logic to change proprty value per plan
+    totalCost: (state) => {
+      state.plan.totalCost = 54;
+    }
   },
 
   actions: {
-    setPlan(plan, value) {
-      this.plan[value] = value;
+    setPlan(planName, value) {
+      if (Object.hasOwn(this.plan, planName)) {
+        this.plan[planName] = value;
+      } else {
+        throw new Error(`Invalid plan property: ${planName}`);
+      }
     },
   },
 });

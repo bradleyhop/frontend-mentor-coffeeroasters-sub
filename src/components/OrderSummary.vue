@@ -11,7 +11,7 @@ export default {
 
   data() {
     return {
-      customerPlan: useCustomerPlan().plan,
+      customerPlan: useCustomerPlan(),
     };
   },
 };
@@ -20,33 +20,33 @@ export default {
 <template>
   <p class="summary-copy">
     &ldquo;I drink my coffee
-    {{ customerPlan.how === 'Capsule' ? 'using' : 'as' }}
+    {{ customerPlan.plan.how === 'Capsule' ? 'using' : 'as' }}
     <span class="summary-highlight">{{
-      customerPlan.how
-        ? customerPlan.how === 'Capsule'
+      customerPlan.plan.how
+        ? customerPlan.plan.how === 'Capsule'
           ? 'Capsules'
-          : customerPlan.how
+          : customerPlan.plan.how
         : '____'
     }}</span
     >, with a
     <span class="summary-highlight">{{
-      customerPlan.type ? customerPlan.type : '____'
+      customerPlan.plan.type ? customerPlan.plan.type : '____'
     }}</span>
     type of bean.
     <span class="summary-highlight">{{
-      customerPlan.size ? customerPlan.size : '____'
+      customerPlan.plan.size ? customerPlan.plan.size : '____'
     }}</span
-    >{{ customerPlan.how === 'Capsule' ? '' : ' ground ala '
+    >{{ customerPlan.plan.how === 'Capsule' ? '' : ' ground ala '
     }}<span class="summary-highlight">{{
-      customerPlan.how === 'Capsule'
+      customerPlan.plan.how === 'Capsule'
         ? ''
-        : customerPlan.grind
-        ? customerPlan.grind
+        : customerPlan.plan.grind
+        ? customerPlan.plan.grind
         : '____'
     }}</span
     >, sent to me
     <span class="summary-highlight">{{
-      customerPlan.frequency ? customerPlan.frequency : '____'
+      customerPlan.plan.frequency ? customerPlan.plan.frequency : '____'
     }}</span
     >.&rdquo;
   </p>
