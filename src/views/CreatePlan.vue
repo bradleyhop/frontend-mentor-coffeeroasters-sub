@@ -215,7 +215,14 @@ export default {
               "
             >
               <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
-              <p class="select-plan-copy">{{ plan.selectionDescription }}</p>
+              <!-- recactively show total based on grind selection -->
+              <p v-if="selection.selectionType === 'frequency'">
+                &dollar;{{ customerPlan.plan.costs[plan.id].toFixed(2)
+                }}{{ plan.selectionDescription }}
+              </p>
+              <p v-else class="select-plan-copy">
+                {{ plan.selectionDescription }}
+              </p>
             </div>
           </div>
         </details>

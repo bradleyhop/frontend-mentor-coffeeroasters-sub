@@ -119,26 +119,21 @@ const planSelections = [
       {
         id: 0,
         isSelected: false,
-        selectionName: 'Every week',
+        selectionName: 'Every Week',
         selectionDescription:
-          '$14.00 per shipment. Includes free first-class shipping.',
-        cost: 14,
+          ' per shipment. Includes free first-class shipping.',
       },
       {
         id: 1,
         isSelected: false,
-        selectionName: 'Every 2 weeks',
-        selectionDescription:
-          '$17.25 per shipment. Includes free priority shipping.',
-        cost: 17.25,
+        selectionName: 'Every 2 Weeks',
+        selectionDescription: ' per shipment. Includes free priority shipping.',
       },
       {
         id: 2,
         isSelected: false,
-        selectionName: 'Every 3 weeks',
-        selectionDescription:
-          '$22.50 per shipment. Includes free priority shipping.',
-        cost: 22.5,
+        selectionName: 'Every Month',
+        selectionDescription: ' per shipment. Includes free priority shipping.',
       },
     ],
   },
