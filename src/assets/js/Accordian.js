@@ -38,7 +38,7 @@ export default class Accordion {
         height: [startHeight, endHeight],
       },
       {
-        duration: 400,
+        duration: 300,
         easing: 'ease-in-out',
       },
     );
@@ -69,7 +69,7 @@ export default class Accordion {
         height: [startHeight, endHeight],
       },
       {
-        duration: 400,
+        duration: 300,
         easing: 'ease-in-out',
       },
     );

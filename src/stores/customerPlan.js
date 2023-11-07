@@ -2,22 +2,50 @@ import { defineStore } from 'pinia';
 
 export const useCustomerPlan = defineStore('customerPlan', {
   state: () => ({
-      plan: {
-        how: '',
-        type: '',
-        size: '',
-        grind: '',
-        delivery: '',
-        frequency: '',
-        totalCost: 1, // placeholder until getters is implemented
-      }
+    plan: {
+      how: '',
+      type: '',
+      size: '',
+      grind: '',
+      delivery: '',
+      frequency: '',
+      // index 0: weekly; 1: bi-weekly; 2: monthly; using an array for v-for rendering
+      costs: [],
+      totalCost: null,
+    },
   }),
 
   getters: {
-    // TODO: update logic to change proprty value per plan
+    weeklyCost: (state) => {
+      if (state.plan.size === '250g') {
+        state.plan.costs[0] = 7.2;
+        state.plan.costs[1] = 9.6;
+        state.plan.costs[2] = 12.0;
+      } else if (state.plan.size === '500g') {
+        state.plan.costs[0] = 13;
+        state.plan.costs[1] = 17.5;
+        state.plan.costs[2] = 22;
+      } else if (state.plan.size === '1000g') {
+        state.plan.costs[0] = 22;
+        state.plan.costs[1] = 32;
+        state.plan.costs[2] = 42;
+      } else {
+        // default values for rendering
+        state.plan.costs[0] = 0;
+        state.plan.costs[1] = 0;
+        state.plan.costs[2] = 0;
+      }
+    },
+
     totalCost: (state) => {
-      state.plan.totalCost = 54;
-    }
+      if (state.plan.frequency === 'Every Week') {
+        state.plan.totalCost = state.plan.costs[0] * 4;
+      } else if (state.plan.frequency === 'Every 2 Weeks') {
+        state.plan.totalCost = state.plan.costs[1] * 2;
+      } else if (state.plan.frequency === 'Every Month') {
+        state.plan.totalCost = state.plan.costs[2];
+      }
+    },
   },
 
   actions: {

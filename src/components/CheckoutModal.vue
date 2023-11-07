@@ -21,8 +21,8 @@ export default {
 
   data() {
     return {
-      // needed for plan total cost
-      customerPlan: useCustomerPlan().plan,
+      // needed for this.customerPlan.plan total cost
+      customerPlan: useCustomerPlan(),
     };
   },
 
@@ -41,7 +41,7 @@ export default {
         </div>
 
         <div class="modal-body">
-          <!-- won't work until state implemented -->
+          <!-- won't work until dimplemented -->
           <OrderSummary class="modal-order-summary" />
 
           <p class="info-text-copy">
@@ -53,7 +53,9 @@ export default {
 
         <div class="modal-checkout-button-container">
           <AppButton
-            :text="`Checkout - $${customerPlan.totalCost} / mo`"
+            :text="`Checkout - &dollar;${customerPlan.plan.totalCost.toFixed(
+              2,
+            )} / mo`"
             @click="$emit('close')"
             class="modal-checkout-button"
           />
