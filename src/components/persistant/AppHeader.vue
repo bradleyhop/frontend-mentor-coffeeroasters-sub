@@ -1,11 +1,13 @@
 <script>
 import MobileNav from '@/components/menu/MobileNav.vue';
+import ListNav from '@/components/menu/ListNav.vue';
 
 export default {
   name: 'AppHeader',
 
   components: {
     MobileNav,
+    ListNav,
   },
 };
 </script>
@@ -20,6 +22,9 @@ export default {
     <div class="mobile-nav">
       <MobileNav />
     </div>
+    <div class="list-nav-container">
+      <ListNav />
+    </div>
   </header>
 </template>
 
@@ -29,6 +34,18 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include tablet-breakpoint {
+    margin: 2.5rem 2.5rem 2.5rem 3.31rem;
+  }
+}
+
+.list-nav-container {
+  display: none;
+
+  @include tablet-breakpoint {
+    display: block;
+  }
 }
 
 .header-logo {
@@ -38,6 +55,8 @@ export default {
 .mobile-nav {
   display: block;
 
-  // placeholder for non-mobile view
+  @include tablet-breakpoint {
+    display: none;
+  }
 }
 </style>
