@@ -29,6 +29,10 @@ body {
 }
 
 main {
-  padding: 0rem 1.5rem;
+  margin: 0rem 1.5rem;
+
+  @include tablet-breakpoint {
+    margin: 0rem 2.5rem;
+  }
 }
 </style>

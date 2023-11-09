@@ -1,6 +1,4 @@
 <script>
-// how it works steps copy
-import howItWorks from '@/assets/data/howItWorks.js';
 // plans selection
 import planSelectionsData from '@/assets/data/planSelections.js';
 // accordion class
@@ -13,21 +11,23 @@ import AppButton from '@/components/AppButton.vue';
 import CheckoutModal from '@/components/CheckoutModal.vue';
 // cart stores
 import { useCustomerPlan } from '@/stores/customerPlan.js';
+// steps card block
+import HowItWorksCards from '@/components/blocks/HowItWorksCards.vue';
 
 export default {
   name: 'CreatePlan',
 
   components: {
     AppButton,
+    HowItWorksCards,
     OrderSummary,
     CheckoutModal,
   },
 
   data() {
     return {
-      // how it works steps
-      steps: Object.freeze(howItWorks),
-      // plan selection copy, values, and boolean class selection
+      // plan selection copy, values, and boolean class selection;
+      //  NB: do not freeze!! Need reactivity for user selection
       planSelections: planSelectionsData,
       // user selected plan in store
       customerPlan: useCustomerPlan(),
@@ -174,11 +174,8 @@ export default {
     </section>
 
     <section class="steps-container">
-      <div v-for="step in steps" :key="step.numb" class="how-it-works-card">
-        <h3 class="how-it-works-numb">{{ step.numb }}</h3>
-        <h4 class="how-it-works-title steps-color">{{ step.title }}</h4>
-        <p class="how-it-works-copy steps-color">{{ step.copy }}</p>
-      </div>
+      <!-- TODO: fix styling per desgin -->
+      <HowItWorksCards />
     </section>
 
     <section class="select-plan-container">
@@ -273,10 +270,11 @@ export default {
   margin: 0 -1.5rem 7.5rem -1.5rem;
   text-align: center;
   padding: 5rem 0;
-}
-
-.steps-color {
   color: $white;
+
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
 }
 
 .selection-container {

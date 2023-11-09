@@ -1,7 +1,7 @@
 <script>
 export default {
   name: 'ListNav',
-}
+};
 </script>
 
 <template>
@@ -14,7 +14,9 @@ export default {
         <RouterLink to="/about" class="list-nav-link">About Us</RouterLink>
       </li>
       <li class="list-nav__item">
-        <RouterLink to="/createplan" class="list-nav-link">Create Your Plan</RouterLink>
+        <RouterLink to="/createplan" class="list-nav-link"
+          >Create Your Plan</RouterLink
+        >
       </li>
     </ul>
   </nav>
