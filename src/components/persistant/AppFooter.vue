@@ -76,6 +76,10 @@ export default {
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 3.03rem;
+
+  @include tablet-breakpoint {
+    flex-direction: row;
+  }
 }
 
 .footer-nav-link {

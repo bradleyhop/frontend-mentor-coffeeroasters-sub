@@ -44,7 +44,7 @@ export default {
 
 <template>
   <div class="about-container">
-    <section class="hero-container">
+    <section class="hero-container about-hero-container">
       <picture>
         <source
           :srcset="`./src/assets/img/about/mobile/image-hero-whitecup.jpg`"
@@ -70,17 +70,14 @@ export default {
           class="hero-img"
         />
       </picture>
-      <div class="hero-content-container">
-        <h1 class="main-about-heading">About Us</h1>
-        <p class="main-about-paragraph">
+      <div class="hero-content-container about-hero-content-container">
+        <h1 class="main-about-heading about-heading">About Us</h1>
+        <p class="main-about-paragraph about-paragraph">
           Coffeeroasters began its journey of exotic discovery in 1999,
           highlighting stories of coffee from around the world. We have since
           been dedicated to bring the perfect cup - from bean to brew - in every
           shipment.
         </p>
-        <RouterLink to="/createplan">
-          <AppButton text="Create your own plan" />
-        </RouterLink>
       </div>
     </section>
 
@@ -110,20 +107,22 @@ export default {
           class="commitment-img"
         />
       </picture>
-      <h2 class="commitment-heading">Our commitment</h2>
-      <p class="commitment-paragraph">
-        We’re built on a simple mission and a commitment to doing good along the
-        way. We want to make it easy for you to discover and brew the world’s
-        best coffee at home. It all starts at the source. To locate the specific
-        lots we want to purchase, we travel nearly 60 days a year trying to
-        understand the challenges and opportunities in each of these places. We
-        collaborate with exceptional coffee growers and empower a global
-        community of farmers through with well above fair-trade benchmarks. We
-        also offer training, support farm community initiatives, and invest in
-        coffee plant science. Curating only the finest blends, we roast each lot
-        to highlight tasting profiles distinctive to their native growing
-        region.
-      </p>
+      <div class="commitment-content-container">
+        <h2 class="commitment-heading">Our commitment</h2>
+        <p class="commitment-paragraph">
+          We’re built on a simple mission and a commitment to doing good along
+          the way. We want to make it easy for you to discover and brew the
+          world’s best coffee at home. It all starts at the source. To locate
+          the specific lots we want to purchase, we travel nearly 60 days a year
+          trying to understand the challenges and opportunities in each of these
+          places. We collaborate with exceptional coffee growers and empower a
+          global community of farmers through with well above fair-trade
+          benchmarks. We also offer training, support farm community
+          initiatives, and invest in coffee plant science. Curating only the
+          finest blends, we roast each lot to highlight tasting profiles
+          distinctive to their native growing region.
+        </p>
+      </div>
     </section>
 
     <section class="quality-container">
@@ -167,12 +166,15 @@ export default {
 
     <section class="headquarters-container">
       <h2 class="headquarters-heading">Our headquarters</h2>
+      <div class="location-content-container">
       <div
         v-for="location in locations"
         :key="location"
         class="location-container"
       >
+        <div class="location-img-continaer">
         <img :src="location.img" :alt="location.country" class="location-img" />
+      </div>
         <h3 class="location-heading">{{ location.country }}</h3>
         <p class="location-paragraph">
           {{ location.street }}<br />
@@ -181,11 +183,29 @@ export default {
           {{ location.tel }}<br />
         </p>
       </div>
+    </div>
     </section>
   </div>
 </template>
 
 <style lang="scss">
+.about-hero-container {
+  min-height: 25rem;
+}
+
+.about-hero-content-container {
+  padding-left: 3.62rem !important;
+}
+
+.about-heading {
+  padding-left: 0 !important;
+}
+
+.about-paragraph {
+  min-width: 24.875rem;
+  padding-left: 0 !important;
+}
+
 .main-about-heading {
   font-family: 'Fraunces', serif;
   font-size: 1.75rem;
@@ -205,12 +225,30 @@ export default {
 
 .commitment-container {
   text-align: center;
+
+  @include tablet-breakpoint {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .commitment-img {
   background-color: $dark-cyan;
   border-radius: 0.5rem;
   margin-bottom: 3rem;
+
+  @include tablet-breakpoint {
+    margin-bottom: 0;
+  }
+}
+
+.commitment-content-container {
+  margin-bottom: 7.5rem;
+
+  @include tablet-breakpoint {
+    margin-bottom: 10.5rem;
+  }
 }
 
 .commitment-heading {
@@ -222,7 +260,6 @@ export default {
 
 .commitment-paragraph {
   @include app-body;
-  margin-bottom: 7.5rem;
 }
 
 .quality-container {
@@ -234,16 +271,27 @@ export default {
   background-color: $dark-cyan;
   border-radius: 0.5rem;
   z-index: 1;
+
+  @include tablet-breakpoint {
+    height: 20rem;
+  }
 }
 
 .quality-content-container {
   min-height: 31.81rem;
   background-color: $dark-grey;
   position: relative;
+  /* calc of image above height */
   top: calc(-9.75rem / 2);
   z-index: -1;
   border-radius: 0.625rem;
   display: block;
+
+  @include tablet-breakpoint {
+    min-height: 30.5rem;
+    /* calc of image above height */
+    top: calc(-20rem / 2);
+  }
 }
 
 .quality-heading {
@@ -252,17 +300,38 @@ export default {
   padding-top: 8.875rem; // calc of parent plus 4rem
   color: $light-cream;
   margin: 0 1.5rem 1.5rem 1.5rem;
+
+  @include tablet-breakpoint {
+    padding-top: 14rem;
+  }
 }
 
 .quality-paragraph {
   @include app-body;
   color: $light-cream;
   padding: 0 1.5rem;
+
+  @include tablet-breakpoint {
+    padding: 0 4.62rem;
+  }
 }
 
 .headquarters-container {
   margin-bottom: 7.5rem;
   text-align: center;
+
+  @include tablet-breakpoint {
+    margin-bottom: 9rem;
+    text-align: left;
+  }
+}
+
+.location-content-container {
+  @include tablet-breakpoint {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.62rem;
+  }
 }
 
 .headquarters-heading {
@@ -271,8 +340,13 @@ export default {
   margin-bottom: 4.5rem;
 }
 
+.location-img-container {
+  @include tablet-breakpoint {
+    height: 6.13rem;
+  }
+}
+
 .location-img {
-  width: 3.067rem;
   margin-bottom: 3rem;
 }
 
