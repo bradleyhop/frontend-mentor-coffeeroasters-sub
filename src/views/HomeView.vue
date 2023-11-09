@@ -2,20 +2,20 @@
 import AppButton from '@/components/AppButton.vue';
 // coffee collection as list; more prone to future changes
 import coffees from '@/assets/data/coffeeCollection.js';
-// how it works steps
-import howItWorks from '@/assets/data/howItWorks.js';
+// how it works steps block
+import HowItWorksCards from '@/components/blocks/HowItWorksCards.vue';
 
 export default {
   name: 'HomeView',
 
   components: {
     AppButton,
+    HowItWorksCards,
   },
 
   data() {
     return {
       coffeCollection: Object.freeze(coffees),
-      steps: Object.freeze(howItWorks),
       // why us card content
       benefits: Object.freeze([
         {
@@ -74,22 +74,32 @@ export default {
           curated artisa coffees from our best roasters delivered directly to
           your door, at your schedule.
         </p>
-        <RouterLink to="/createplan">
-          <AppButton text="Create your own plan" />
-        </RouterLink>
+        <div class="call-to-action-button-container">
+          <RouterLink to="/createplan">
+            <AppButton text="Create your own plan" />
+          </RouterLink>
+        </div>
       </div>
     </section>
 
     <section class="collection-container">
       <h2 class="collection-heading">our collection</h2>
-      <div v-for="coffee in coffeCollection" :key="coffee.name">
-        <img
-          :src="`./src/assets/img/home/desktop/${coffee.src}`"
-          alt="decorative image of coffee"
-          class="coffee-img"
-        />
-        <h3 class="coffee-name">{{ coffee.name }}</h3>
-        <p class="coffee-copy">{{ coffee.copy }}</p>
+      <div class="coffee-card-container">
+        <div
+          v-for="coffee in coffeCollection"
+          :key="coffee.name"
+          class="coffee-card"
+        >
+          <img
+            :src="`./src/assets/img/home/desktop/${coffee.src}`"
+            alt="decorative image of coffee"
+            class="coffee-img"
+          />
+          <div class="coffee-collection-content">
+            <h3 class="coffee-name">{{ coffee.name }}</h3>
+            <p class="coffee-copy">{{ coffee.copy }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -113,8 +123,10 @@ export default {
                 :src="`./src/assets/img/home/desktop/${benefit.img}`"
                 class="benefit-img"
               />
-              <h3 class="benefit-title">{{ benefit.title }}</h3>
-              <p class="benefit-copy">{{ benefit.copy }}</p>
+              <div class="benefit-content">
+                <h3 class="benefit-title">{{ benefit.title }}</h3>
+                <p class="benefit-copy">{{ benefit.copy }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -123,11 +135,12 @@ export default {
 
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
-      <div v-for="step in steps" :key="step.numb" class="how-it-works-card">
-        <h3 class="how-it-works-numb">{{ step.numb }}</h3>
-        <h4 class="how-it-works-title">{{ step.title }}</h4>
-        <p class="how-it-works-copy">{{ step.copy }}</p>
-      </div>
+      <img
+        :src="`./src/assets/img/shared/desktop/circles-line.svg`"
+        alt="decorative"
+        class="circles-line"
+      />
+      <HowItWorksCards />
       <RouterLink to="/createplan">
         <AppButton text="Create your own plan" class="how-it-works-button" />
       </RouterLink>
@@ -140,6 +153,10 @@ export default {
   @include header-1;
   color: $light-cream;
   padding: 0 1.5rem 1.5rem 1.5rem;
+
+  @include tablet-breakpoint {
+    padding: 0 0 1.5rem 0;
+  }
 }
 
 .main-paragraph {
@@ -147,6 +164,10 @@ export default {
   color: $light-cream;
   padding: 0 1.5rem 1.5rem 1.5rem;
   opacity: 0.8;
+
+  @include tablet-breakpoint {
+    padding: 0 0 1.5rem 0;
+  }
 }
 
 .collection-container {
@@ -158,14 +179,52 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   height: 4.5rem;
+
+  @include tablet-breakpoint {
+    font-size: 6rem;
+    line-height: 0.75;
+  }
+}
+
+.coffee-card-container {
+  @include tablet-breakpoint {
+    position: relative;
+    top: -2rem;
+  }
+}
+
+.coffee-card {
+  @include tablet-breakpoint {
+    display: flex;
+    justify-content: center;
+    min-height: 12rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .coffee-img {
   height: 8rem;
+
+  @include tablet-breakpoint {
+    height: 12rem;
+  }
 }
+
+.coffee-collection-content {
+  @include tablet-breakpoint {
+    text-align: left;
+    margin-left: 2.25rem;
+  }
+}
+
 .coffee-name {
   @include header-4;
   margin-bottom: 1rem;
+
+  @include tablet-breakpoint {
+    margin-top: 1.85rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .coffee-copy {
@@ -177,6 +236,10 @@ export default {
 .why-us-container {
   // pushes next section down, hacky
   min-height: calc(56.375rem * 1.85);
+
+  @include tablet-breakpoint {
+    min-height: calc(53.9375rem * 1.2);
+  }
 }
 
 .why-us-background {
@@ -186,6 +249,10 @@ export default {
   height: 56.375rem;
   background-color: $dark-grey;
   border-radius: 0.625rem;
+
+  @include tablet-breakpoint {
+    height: 35.81rem;
+  }
 }
 
 .why-us-content-container {
@@ -193,6 +260,10 @@ export default {
   grid-area: inner-div;
   padding: 4rem 1.5rem;
   text-align: center;
+
+  @include tablet-breakpoint {
+    padding: 4rem 3.5rem;
+  }
 }
 
 .why-us-heading {
@@ -205,6 +276,10 @@ export default {
   @include app-body;
   color: $light-cream;
   margin-bottom: 4rem;
+
+  @include tablet-breakpoint {
+    padding: 0 1.5rem;
+  }
 }
 
 .benefit-card {
@@ -218,28 +293,75 @@ export default {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 1.5rem;
+
+  @include tablet-breakpoint {
+    flex-direction: row;
+    min-height: 11.25rem;
+    padding: 0;
+  }
 }
 
 .benefit-img {
   width: 4.5rem;
   height: auto;
   margin-bottom: 3.5rem;
+
+  @include tablet-breakpoint {
+    width: 3.5rem;
+    height: auto;
+    margin-bottom: 0;
+    margin-left: 4.88rem;
+  }
+}
+
+.benefit-content {
+  @include tablet-breakpoint {
+    text-align: left;
+    padding-left: 3.44rem;
+    padding-right: 3rem;
+  }
 }
 
 .benefit-title {
   @include header-4;
   margin-bottom: 1.5rem;
+
+  @include tablet-breakpoint {
+    margin-bottom: 1rem;
+  }
 }
 
 .benefit-copy {
   @include app-body;
 }
 
-.how-it-works-container {
-  text-align: center;
+/*
+ * TODO: remove duplication; see main.scss
+ */
+
+.how-it-works-heading {
+  @include header-2;
+  color: $grey;
+  margin-bottom: 5rem;
 }
 
-.how-it-works-button {
+.how-it-works-container {
+  text-align: center;
   margin-bottom: 7.5rem;
+
+  @include tablet-breakpoint {
+    text-align: left;
+    margin-bottom: 9rem;
+  }
+}
+
+.circles-line {
+  display: none;
+
+  @include tablet-breakpoint {
+    display: block;
+    width: 72.25%;
+    margin-bottom: 3rem;
+  }
 }
 </style>
