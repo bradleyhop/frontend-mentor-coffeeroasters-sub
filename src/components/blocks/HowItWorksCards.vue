@@ -23,7 +23,7 @@ export default {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .how-it-works-steps-container {
   @include tablet-breakpoint {
     display: grid;
@@ -48,6 +48,8 @@ export default {
 
 .how-it-works-title {
   @include header-3;
+  /* force text to wrap to two lines */
+  max-width: 14rem;
   margin-bottom: 1.5rem;
 }
 
