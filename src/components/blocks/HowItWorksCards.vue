@@ -14,6 +14,11 @@ export default {
 </script>
 
 <template>
+  <img
+    :src="`./src/assets/img/shared/desktop/circles-line.svg`"
+    alt="decorative"
+    class="circles-line"
+  />
   <div class="how-it-works-steps-container">
     <div v-for="step in steps" :key="step.numb" class="how-it-works-card">
       <h3 class="how-it-works-numb">{{ step.numb }}</h3>
@@ -24,12 +29,21 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.circles-line {
+  display: none;
+
+  @include tablet-breakpoint {
+    display: block;
+    width: 72.25%;
+    margin-bottom: 3rem;
+  }
+}
+
 .how-it-works-steps-container {
   @include tablet-breakpoint {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.62rem;
-    margin-bottom: 2.7rem;
   }
 }
 

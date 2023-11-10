@@ -135,11 +135,6 @@ export default {
 
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
-      <img
-        :src="`./src/assets/img/shared/desktop/circles-line.svg`"
-        alt="decorative"
-        class="circles-line"
-      />
       <HowItWorksCards />
       <RouterLink to="/createplan">
         <AppButton text="Create your own plan" class="how-it-works-button" />
@@ -345,6 +340,10 @@ export default {
   margin-bottom: 5rem;
 }
 
+.how-it-works-button {
+  margin-top: 2.5rem;
+}
+
 .how-it-works-container {
   text-align: center;
   margin-bottom: 7.5rem;
@@ -352,16 +351,6 @@ export default {
   @include tablet-breakpoint {
     text-align: left;
     margin-bottom: 9rem;
-  }
-}
-
-.circles-line {
-  display: none;
-
-  @include tablet-breakpoint {
-    display: block;
-    width: 72.25%;
-    margin-bottom: 3rem;
   }
 }
 </style>

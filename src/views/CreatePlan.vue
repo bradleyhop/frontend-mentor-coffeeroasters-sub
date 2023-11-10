@@ -137,7 +137,7 @@ export default {
 
 <template>
   <div class="create-plan-container">
-    <section class="hero-container">
+    <section class="hero-container plan-hero-conatiner">
       <picture>
         <source
           :srcset="`./src/assets/img/plan/mobile/image-hero-blackcup.jpg`"
@@ -174,7 +174,6 @@ export default {
     </section>
 
     <section class="steps-container">
-      <!-- TODO: fix styling per desgin -->
       <HowItWorksCards />
     </section>
 
@@ -248,19 +247,35 @@ export default {
 </template>
 
 <style lang="scss">
+.plan-hero-conatiner {
+  @include tablet-breakpoint {
+    min-height: 25rem;
+  }
+}
+
 .main-plans-heading {
+  color: $light-cream;
   font-family: 'Fraunces', serif;
   font-size: 2.5rem;
   font-weight: 900;
   line-height: 1.1;
-  color: $light-cream;
   margin-bottom: 1.38rem;
+
+  @include tablet-breakpoint {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .main-plans-copy {
   @include app-body;
-  padding: 0 1.5rem;
   color: $light-cream;
+  padding: 0 1.5rem;
+
+  @include tablet-breakpoint {
+    font-size: 0.9375rem;
+    padding: 0;
+    width: 24.875rem;
+  }
 }
 
 .steps-container {
@@ -272,8 +287,16 @@ export default {
   padding: 5rem 0;
   color: $white;
 
-  @media screen and (min-width: 768px) {
+  @include tablet-breakpoint {
+    margin: 0 -2.5rem 9rem -2.5rem;
+    padding: 6.06rem 2.5rem;
     text-align: left;
+  }
+}
+
+.select-plan-container {
+  @include tablet-breakpoint {
+    margin-bottom: 9rem;
   }
 }
 
@@ -315,11 +338,28 @@ export default {
   font-weight: 900;
   line-height: 1.16;
   width: 15rem;
+
+  @include tablet-breakpoint {
+    width: initial;
+    font-size: 2rem;
+  }
+}
+
+.arrow-container {
+  align-self: center;
 }
 
 .arrow-icon {
   /* match timing to expansion animation */
   transition: all 0.3s ease-in-out;
+}
+
+.content-wrapper {
+  @include tablet-breakpoint {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.62rem;
+  }
 }
 
 .select-plan-details[open] .arrow-icon {
@@ -335,6 +375,10 @@ export default {
 
   &:hover {
     cursor: pointer;
+  }
+
+  @include tablet-breakpoint {
+    padding: 2rem 1.56rem 5.25rem 1.56rem;
   }
 }
 
@@ -358,6 +402,11 @@ export default {
   color: $white;
   padding: 2rem 1.5rem;
   margin-bottom: 3.5rem;
+
+  @include tablet-breakpoint {
+    padding: 1.94rem 2.75rem;
+    margin-bottom: 2.5rem;
+  }
 }
 
 .summary-title {
@@ -372,5 +421,9 @@ export default {
 .checkout-btn-container {
   text-align: center;
   margin-bottom: 7.5rem;
+
+  @include tablet-breakpoint {
+    margin-bottom: 9rem;
+  }
 }
 </style>
