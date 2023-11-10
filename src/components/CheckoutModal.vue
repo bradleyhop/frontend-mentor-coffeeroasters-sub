@@ -59,6 +59,12 @@ export default {
             @click="$emit('close')"
             class="modal-checkout-button"
           />
+          <div class="modal-checkout-container">
+            <p class="total-cost">
+              &dollar;{{ customerPlan.plan.totalCost.toFixed(2) }} / mo
+            </p>
+            <AppButton text="Checkout" @click="$emit('close')" />
+          </div>
         </div>
       </div>
     </div>
@@ -85,6 +91,10 @@ export default {
   border-radius: 0.5rem;
   margin: auto 1.5rem;
   transition: all 0.3s ease;
+
+  @include tablet-breakpoint {
+    margin: auto 7.12rem;
+  }
 }
 
 .modal-header-container {
@@ -95,16 +105,30 @@ export default {
   align-items: center;
   justify-content: center;
   margin-bottom: 2.5rem;
+
+  @include tablet-breakpoint {
+    justify-content: flex-start;
+    margin-bottom: 3.56rem;
+  }
 }
 
 .modal-header {
   @include header-3;
   color: $white;
+
+  @include tablet-breakpoint {
+    font-size: 2.5rem;
+    margin-left: 3.5rem;
+  }
 }
 
 .modal-body {
   margin: 20px 0;
   margin: 0 1.5rem;
+
+  @include tablet-breakpoint {
+    margin: 0 3.5rem;
+  }
 }
 
 .modal-order-summary {
@@ -115,15 +139,47 @@ export default {
   @include app-body;
   color: $dark-grey-blue;
   margin-bottom: 1.5rem;
+
+  @include tablet-breakpoint {
+    margin-bottom: 2.94rem;
+  }
 }
 
 .modal-checkout-button-container {
   margin: 0 1.5rem 1.5rem 1.5rem;
+
+  @include tablet-breakpoint {
+    margin: 0 3.5rem 1.5rem 3.5rem;
+  }
 }
 
 .modal-checkout-button {
   text-align: center;
   width: 100%;
+
+  @include tablet-breakpoint {
+    display: none;
+  }
+}
+
+.modal-checkout-container {
+  display: none;
+
+  @include tablet-breakpoint {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.81rem;
+    text-align: center;
+  }
+}
+
+.total-cost {
+  font-family: "Fraunces", serif;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 2.25rem;
+  display: flex;
+  align-items: center;
 }
 
 /*
