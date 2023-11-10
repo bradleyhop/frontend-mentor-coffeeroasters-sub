@@ -1,12 +1,6 @@
 <script>
-import AppButton from '@/components/AppButton.vue';
-
 export default {
   name: 'AboutView',
-
-  components: {
-    AppButton,
-  },
 
   data() {
     return {
@@ -167,23 +161,27 @@ export default {
     <section class="headquarters-container">
       <h2 class="headquarters-heading">Our headquarters</h2>
       <div class="location-content-container">
-      <div
-        v-for="location in locations"
-        :key="location"
-        class="location-container"
-      >
-        <div class="location-img-continaer">
-        <img :src="location.img" :alt="location.country" class="location-img" />
+        <div
+          v-for="location in locations"
+          :key="location"
+          class="location-container"
+        >
+          <div class="location-img-continaer">
+            <img
+              :src="location.img"
+              :alt="location.country"
+              class="location-img"
+            />
+          </div>
+          <h3 class="location-heading">{{ location.country }}</h3>
+          <p class="location-paragraph">
+            {{ location.street }}<br />
+            {{ location.city }}<br />
+            {{ location.province }} <br />
+            {{ location.tel }}<br />
+          </p>
+        </div>
       </div>
-        <h3 class="location-heading">{{ location.country }}</h3>
-        <p class="location-paragraph">
-          {{ location.street }}<br />
-          {{ location.city }}<br />
-          {{ location.province }} <br />
-          {{ location.tel }}<br />
-        </p>
-      </div>
-    </div>
     </section>
   </div>
 </template>
