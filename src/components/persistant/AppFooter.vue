@@ -1,6 +1,17 @@
 <script>
+// SVG icons; inline for styling
+import IconFacebook from '@/components/svg/IconFacebook.vue';
+import IconTwitter from '@/components/svg/IconTwitter.vue';
+import IconInsta from '@/components/svg/IconInsta.vue';
+
 export default {
   name: 'AppFooter',
+
+  components: {
+    IconFacebook,
+    IconTwitter,
+    IconInsta,
+  },
 };
 </script>
 
@@ -24,33 +35,21 @@ export default {
         target="_blank"
         rel="noreferrer nofollow"
       >
-        <img
-          :src="`./src/assets/img/shared/desktop/icon-facebook.svg`"
-          class="footer-social-link"
-          alt="facebook link"
-        />
+        <IconFacebook class="footer-social-link" />
       </a>
       <a
         href="https://www.twitter.com/"
         target="_blank"
         rel="noreferrer nofollow"
       >
-        <img
-          :src="`./src/assets/img/shared/desktop/icon-twitter.svg`"
-          class="footer-social-link"
-          alt="twitter link"
-        />
+        <IconTwitter class="footer-social-link" />
       </a>
       <a
         href="https://www.instagram.com/"
         target="_blank"
         rel="noreferrer nofollow"
       >
-        <img
-          :src="`./src/assets/img/shared/desktop/icon-instagram.svg`"
-          class="footer-social-link"
-          alt="instagram link"
-        />
+        <IconInsta class="footer-social-link" />
       </a>
     </div>
   </footer>
@@ -109,6 +108,10 @@ export default {
 }
 
 .footer-social-link {
-  height: 1.5rem;
+  fill: $light-cream;
+
+  &:hover {
+    fill: $pale-orange;
+  }
 }
 </style>
