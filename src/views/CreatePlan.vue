@@ -374,6 +374,8 @@ export default {
   padding: 1.5rem;
 
   &:hover {
+    background-color: $pale-orange;
+    color: $dark-grey-blue;
     cursor: pointer;
   }
 
@@ -385,6 +387,12 @@ export default {
 .activeChoice {
   background-color: $dark-cyan;
   color: $white;
+
+  /* override unselected hover */
+  &:hover {
+    background-color: $dark-cyan;
+    color: $white;
+  }
 }
 
 .select-plan-title {

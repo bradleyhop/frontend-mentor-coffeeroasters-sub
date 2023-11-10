@@ -174,7 +174,7 @@ export default {
 }
 
 .total-cost {
-  font-family: "Fraunces", serif;
+  font-family: 'Fraunces', serif;
   font-size: 2rem;
   font-weight: 900;
   line-height: 2.25rem;
