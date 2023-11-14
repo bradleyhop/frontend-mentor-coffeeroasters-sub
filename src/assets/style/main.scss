@@ -32,6 +32,11 @@
     grid-column: 1 / 1;
     grid-row: 1 / 1;
   }
+
+  @include desktop-breakpoint {
+    min-height: 37.5rem;
+    margin-bottom: 8.5rem;
+  }
 }
 
 .hero-img {
@@ -49,5 +54,10 @@
     max-width: 25rem;
     text-align: left;
     padding-left: 3rem;
+  }
+
+  @include desktop-breakpoint {
+    max-width: 30.8125rem;
+    padding-left: 5.31rem;
   }
 }

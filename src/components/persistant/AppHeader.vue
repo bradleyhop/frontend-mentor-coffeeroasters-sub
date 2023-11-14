@@ -38,6 +38,10 @@ export default {
   @include tablet-breakpoint {
     margin: 2.5rem 2.5rem 2.5rem 3.31rem;
   }
+
+  @include desktop-breakpoint {
+    margin: 2.72rem 5rem 2.72rem 5rem;
+  }
 }
 
 .list-nav-container {

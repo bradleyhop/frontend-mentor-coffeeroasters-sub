@@ -20,7 +20,7 @@ export const useCustomerPlan = defineStore('customerPlan', {
       if (state.plan.size === '250g') {
         state.plan.costs[0] = 7.2;
         state.plan.costs[1] = 9.6;
-        state.plan.costs[2] = 12.0;
+        state.plan.costs[2] = 12;
       } else if (state.plan.size === '500g') {
         state.plan.costs[0] = 13;
         state.plan.costs[1] = 17.5;
