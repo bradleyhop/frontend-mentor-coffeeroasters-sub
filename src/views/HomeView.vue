@@ -84,7 +84,7 @@ export default {
 
     <section class="collection-container">
       <div class="collection-heading-container">
-      <h2 class="collection-heading">our collection</h2>
+        <h2 class="collection-heading">our collection</h2>
       </div>
       <div class="coffee-card-container">
         <div
@@ -93,12 +93,12 @@ export default {
           class="coffee-card"
         >
           <div class="coffee-img-container">
-          <img
-            :src="`./src/assets/img/home/desktop/${coffee.src}`"
-            alt="decorative image of coffee"
-            class="coffee-img"
-          />
-        </div>
+            <img
+              :src="`./src/assets/img/home/desktop/${coffee.src}`"
+              alt="decorative image of coffee"
+              class="coffee-img"
+            />
+          </div>
           <div class="coffee-collection-content">
             <h3 class="coffee-name">{{ coffee.name }}</h3>
             <p class="coffee-copy">{{ coffee.copy }}</p>
@@ -117,16 +117,18 @@ export default {
             coffee growers to give you a more impactful experience on every
             level.
           </p>
-          <div class="benefits-card-container">
+          <div class="benefit-card-container">
             <div
               v-for="benefit in benefits"
               :key="benefit.title"
               class="benefit-card"
             >
+              <div class="benefit-img-container">
               <img
                 :src="`./src/assets/img/home/desktop/${benefit.img}`"
                 class="benefit-img"
               />
+            </div>
               <div class="benefit-content">
                 <h3 class="benefit-title">{{ benefit.title }}</h3>
                 <p class="benefit-copy">{{ benefit.copy }}</p>
@@ -291,18 +293,19 @@ export default {
 }
 
 .why-us-container {
-  // pushes next section down, hacky
+  /* pushes next section down */
   min-height: calc(56.375rem * 1.85);
 
   @include tablet-breakpoint {
     min-height: calc(53.9375rem * 1.2);
   }
+
+  @include tablet-breakpoint {
+    min-height: 63.8125rem;
+  }
 }
 
 .why-us-background {
-  // sets div as a background image
-  display: grid;
-  place-items: center;
   height: 56.375rem;
   background-color: $dark-grey;
   border-radius: 0.625rem;
@@ -310,16 +313,28 @@ export default {
   @include tablet-breakpoint {
     height: 35.81rem;
   }
+
+  @include desktop-breakpoint {
+    height: 36.0625rem;
+  }
 }
 
 .why-us-content-container {
-  // overlays content on top of background
-  grid-area: inner-div;
+  /* overlays content on top of background */
   padding: 4rem 1.5rem;
   text-align: center;
 
   @include tablet-breakpoint {
     padding: 4rem 3.5rem;
+  }
+
+  @include desktop-breakpoint {
+    padding: 4rem 0;
+
+    & > p {
+      font-size: 1rem;
+      line-height: 1.625;
+    }
   }
 }
 
@@ -327,6 +342,11 @@ export default {
   @include header-2;
   color: $light-cream;
   margin-bottom: 1.5rem;
+
+  @include tablet-breakpoint {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .why-us-paragraph {
@@ -336,6 +356,22 @@ export default {
 
   @include tablet-breakpoint {
     padding: 0 1.5rem;
+  }
+
+  @include desktop-breakpoint {
+    padding: 0;
+    width: 33.75rem;
+    margin: auto;
+    margin-bottom: 5.38rem;
+  }
+}
+
+.benefit-card-container {
+  @include desktop-breakpoint {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.88rem;
+    padding: 0 5rem;
   }
 }
 
@@ -356,18 +392,30 @@ export default {
     min-height: 11.25rem;
     padding: 0;
   }
+
+  @include desktop-breakpoint {
+    flex-direction: column;
+    min-height: 23.875rem;
+  }
 }
 
-.benefit-img {
+.benefit-img-container {
   width: 4.5rem;
-  height: auto;
+  height: 4.5rem;
   margin-bottom: 3.5rem;
+  display: flex;
+  align-items: center;
 
   @include tablet-breakpoint {
     width: 3.5rem;
-    height: auto;
     margin-bottom: 0;
     margin-left: 4.88rem;
+  }
+
+  @include desktop-breakpoint {
+    width: 4.5rem;
+    margin-left: 0;
+    margin-bottom: 3.5rem;
   }
 }
 
@@ -376,6 +424,11 @@ export default {
     text-align: left;
     padding-left: 3.44rem;
     padding-right: 3rem;
+  }
+
+  @include desktop-breakpoint {
+    text-align: center;
+    padding: 0;
   }
 }
 
@@ -390,6 +443,10 @@ export default {
 
 .benefit-copy {
   @include app-body;
+
+  @include desktop-breakpoint {
+    padding: 0 3rem;
+  }
 }
 
 /*
@@ -404,6 +461,10 @@ export default {
 
 .how-it-works-button {
   margin-top: 2.5rem;
+
+  @include desktop-breakpoint {
+    margin-top: 5rem;
+  }
 }
 
 .how-it-works-container {
@@ -413,6 +474,11 @@ export default {
   @include tablet-breakpoint {
     text-align: left;
     margin-bottom: 9rem;
+  }
+
+  @include desktop-breakpoint {
+    padding: 0 5rem;
+    margin-bottom: 12.5rem;
   }
 }
 </style>

@@ -37,6 +37,10 @@ export default {
     width: 72.25%;
     margin-bottom: 3rem;
   }
+
+  @include desktop-breakpoint {
+    width: 77%;
+  }
 }
 
 .how-it-works-steps-container {
@@ -44,6 +48,10 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.62rem;
+  }
+
+  @include desktop-breakpoint {
+    grid-gap: 5.94rem;
   }
 }
 
@@ -58,16 +66,33 @@ export default {
   font-weight: 900;
   line-height: 1;
   margin-bottom: 1.5rem;
+
+  @include desktop-breakpoint {
+    margin-bottom: 2.38rem;
+  }
 }
 
 .how-it-works-title {
   @include header-3;
   /* force text to wrap to two lines */
   max-width: 14rem;
-  margin-bottom: 1.5rem;
+  margin: auto auto 1.5rem auto;
+
+  @include tablet-breakpoint {
+    margin: 0 0 1.5rem 0;
+  }
+
+  @include desktop-breakpoint {
+    margin-bottom: 2.62rem;
+  }
 }
 
 .how-it-works-copy {
   @include app-body;
+
+  @include desktop-breakpoint {
+    font-size: 1rem;
+    line-height: 1.625;
+  }
 }
 </style>
