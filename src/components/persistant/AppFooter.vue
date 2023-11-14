@@ -17,11 +17,13 @@ export default {
 
 <template>
   <footer class="footer-container">
+    <div class="footer-logo-container">
     <img
       :src="`./src/assets/img/shared/desktop/logo-white-text.svg`"
       class="footer-logo"
       alt="logo"
     />
+  </div>
     <div class="footer-nav-container">
       <RouterLink to="/" class="footer-nav-link"> HOME </RouterLink>
       <RouterLink to="/about" class="footer-nav-link"> ABOUT </RouterLink>
@@ -60,16 +62,28 @@ export default {
   background-color: $dark-grey;
   margin: 0 1.5rem 4.5rem 1.5rem;
   text-align: center;
+  margin: 0 1.5rem 0 1.5rem;
+  /* not sure why this works for the margin-top of the logo, but it does */
+  border: 0.5px solid transparent;
+
+  @include desktop-breakpoint {
+    margin: 0 5rem 5.5rem 5rem;
+    display: flex;
+    align-items: center;
+  }
 }
 
-.footer-logo {
+.footer-logo-container {
   height: 1.5rem;
   margin: 3.38rem auto 3.03rem auto;
+
+  @include desktop-breakpoint {
+    margin: 2.94rem 6.43rem 2.94rem 5.31rem;
+  }
 }
 
 .footer-nav-container {
   display: flex;
-  padding-right: 0px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -78,6 +92,12 @@ export default {
 
   @include tablet-breakpoint {
     flex-direction: row;
+  }
+
+  @include desktop-breakpoint {
+    flex-grow: 1;
+    justify-content: flex-start;
+    margin: 0;
   }
 }
 
@@ -104,6 +124,15 @@ export default {
 
   & a {
     margin-bottom: 3.38rem;
+
+    @include desktop-breakpoint {
+      margin: 0;
+    }
+  }
+
+  @include desktop-breakpoint {
+    justify-self: flex-end;
+    margin: 0 5.31rem 0 0;
   }
 }
 

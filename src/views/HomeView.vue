@@ -150,6 +150,19 @@ export default {
 </template>
 
 <style lang="scss">
+.home-container {
+  margin-bottom: 7.5rem;
+
+  @include tablet-breakpoint {
+    margin-bottom: 9rem;
+  }
+
+  @include desktop-breakpoint {
+    margin-bottom: 12.5rem;
+  }
+
+}
+
 .main-heading {
   @include header-1;
   color: $light-cream;
@@ -469,16 +482,13 @@ export default {
 
 .how-it-works-container {
   text-align: center;
-  margin-bottom: 7.5rem;
 
   @include tablet-breakpoint {
     text-align: left;
-    margin-bottom: 9rem;
   }
 
   @include desktop-breakpoint {
     padding: 0 5rem;
-    margin-bottom: 12.5rem;
   }
 }
 </style>
