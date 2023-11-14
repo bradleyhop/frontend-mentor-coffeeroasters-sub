@@ -39,14 +39,6 @@ export default {
   },
 
   methods: {
-    // populate customerPan object upon user selection on @click event
-    /*
-     * customerPlan.setPlan(type, select) {
-     *   this.customerPlan[type] = select;
-     *   // console.log(this.customerPlan);
-     * },
-     */
-
     // toggle .activeChoice on user select
     toggleActiveSelect(questionId, selectionId) {
       this.planSelections[questionId].selections.map((el) => {
@@ -57,10 +49,9 @@ export default {
     },
 
     // toggle disabled attribute when all choices are made
-
     toggleDisabled() {
-      // do not check for 'grind' property if user selects 'Capsule'
       if (
+        // do not check for 'grind' property if user selects 'Capsule'
         this.customerPlan.plan.how === 'Capsule' &&
         this.customerPlan.plan.type &&
         this.customerPlan.plan.size &&
@@ -68,13 +59,13 @@ export default {
       ) {
         this.checkoutBtnDisabled = false;
       } else if (
+        // check for all properties
         this.customerPlan.plan.how &&
         this.customerPlan.plan.type &&
         this.customerPlan.plan.size &&
         this.customerPlan.plan.grind &&
         this.customerPlan.plan.frequency
       ) {
-        // check for all properties
         this.checkoutBtnDisabled = false;
       } else {
         // disable button for checkout
@@ -89,7 +80,7 @@ export default {
       //  selections the user made before selecting coffee type
       handler() {
         // using vanilla JS since accordians are rendered in a loop and we only
-        //  need one group
+        //  need one group of accordions
         const grindEl = document.getElementById('grind');
 
         if (this.customerPlan.plan.how === 'Capsule') {
@@ -117,6 +108,7 @@ export default {
     },
 
     customerPlan: {
+      // watch to see if customer has made all selections
       handler() {
         this.toggleDisabled();
       },
@@ -240,7 +232,7 @@ export default {
       />
 
       <Teleport to="body">
-        <CheckoutModal :show="showModal" @close="showModal = false" />
+        <CheckoutModal :show="showModal" @close="showModal = !showModal" />
       </Teleport>
     </div>
   </div>
@@ -314,7 +306,7 @@ export default {
   user-select: none; /* prevents text selection */
   pointer-events: none; /* prevents click events */
 
-  /* indicate disabled state */
+  /* indicate visually the disabled state */
   & > summary {
     opacity: 0.2;
   }

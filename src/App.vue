@@ -34,5 +34,9 @@ main {
   @include tablet-breakpoint {
     margin: 0rem 2.5rem;
   }
+
+  @include desktop-breakpoint {
+    margin: 0rem 5rem;
+  }
 }
 </style>

@@ -51,12 +51,12 @@ export default {
         />
         <source
           :srcset="`./src/assets/img/home/tablet/image-hero-coffeepress.jpg`"
-          media="(min-width: 601px)"
+          media="(max-width: 1199px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/home/tablet/image-hero-coffeepress.jpg`"
+          :srcset="`./src/assets/img/home/desktop/image-hero-coffeepress.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
           alt="decorative image of coffee"
@@ -83,18 +83,22 @@ export default {
     </section>
 
     <section class="collection-container">
+      <div class="collection-heading-container">
       <h2 class="collection-heading">our collection</h2>
+      </div>
       <div class="coffee-card-container">
         <div
           v-for="coffee in coffeCollection"
           :key="coffee.name"
           class="coffee-card"
         >
+          <div class="coffee-img-container">
           <img
             :src="`./src/assets/img/home/desktop/${coffee.src}`"
             alt="decorative image of coffee"
             class="coffee-img"
           />
+        </div>
           <div class="coffee-collection-content">
             <h3 class="coffee-name">{{ coffee.name }}</h3>
             <p class="coffee-copy">{{ coffee.copy }}</p>
@@ -152,6 +156,10 @@ export default {
   @include tablet-breakpoint {
     padding: 0 0 1.5rem 0;
   }
+
+  @include desktop-breakpoint {
+    padding-bottom: 2rem;
+  }
 }
 
 .main-paragraph {
@@ -163,28 +171,55 @@ export default {
   @include tablet-breakpoint {
     padding: 0 0 1.5rem 0;
   }
+
+  @include desktop-breakpoint {
+    padding-bottom: 3.5rem;
+  }
 }
 
 .collection-container {
   text-align: center;
+
+  @include desktop-breakpoint {
+    padding: 0 5.25rem;
+  }
 }
+
+.collection-heading-container {
+  min-height: 4.5rem;
+
+  @include desktop-breakpoint {
+    min-height: 12.25rem;
+  }
+}
+
 .collection-heading {
-  @include header-1;
+  font-family: 'Fraunces', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
   background: linear-gradient(180deg, $grey 0%, $light-cream 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  height: 4.5rem;
 
   @include tablet-breakpoint {
     font-size: 6rem;
-    line-height: 0.75;
+  }
+
+  @include desktop-breakpoint {
+    font-size: 9.375rem;
   }
 }
 
 .coffee-card-container {
   @include tablet-breakpoint {
     position: relative;
-    top: -2rem;
+    top: -3.25rem;
+  }
+
+  @include desktop-breakpoint {
+    top: -5.5rem;
+    display: flex;
+    gap: 1.88rem;
   }
 }
 
@@ -195,13 +230,22 @@ export default {
     min-height: 12rem;
     margin-bottom: 2rem;
   }
+
+  @include desktop-breakpoint {
+    display: initial;
+  }
 }
 
-.coffee-img {
+.coffee-img-container {
   height: 8rem;
+  width: auto;
 
   @include tablet-breakpoint {
     height: 12rem;
+  }
+
+  @include desktop-breakpoint {
+    margin-bottom: 4.47rem;
   }
 }
 
@@ -209,6 +253,11 @@ export default {
   @include tablet-breakpoint {
     text-align: left;
     margin-left: 2.25rem;
+  }
+
+  @include desktop-breakpoint {
+    text-align: center;
+    margin-left: 0;
   }
 }
 
@@ -220,12 +269,25 @@ export default {
     margin-top: 1.85rem;
     margin-bottom: 1.5rem;
   }
+
+  @include desktop-breakpoint {
+    margin-top: 0;
+  }
 }
 
 .coffee-copy {
   @include app-body;
   width: 17.6rem;
   margin: 0 auto 3rem auto;
+
+  @include desktop-breakpoint {
+    margin: auto;
+  }
+
+  @include desktop-breakpoint {
+    width: auto;
+    text-align: center;
+  }
 }
 
 .why-us-container {
