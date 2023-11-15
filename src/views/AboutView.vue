@@ -48,12 +48,12 @@ export default {
         />
         <source
           :srcset="`./src/assets/img/about/tablet/image-hero-whitecup.jpg`"
-          media="(min-width: 601px)"
+          media="(max-width: 1100px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/about/tablet/image-hero-whitecup.jpg`"
+          :srcset="`./src/assets/img/about/desktop/image-hero-whitecup.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
           alt="decorative image of coffee"
@@ -65,8 +65,8 @@ export default {
         />
       </picture>
       <div class="hero-content-container about-hero-content-container">
-        <h1 class="main-about-heading about-heading">About Us</h1>
-        <p class="main-about-paragraph about-paragraph">
+        <h1 class="main-about-heading">About Us</h1>
+        <p class="main-about-paragraph">
           Coffeeroasters began its journey of exotic discovery in 1999,
           highlighting stories of coffee from around the world. We have since
           been dedicated to bring the perfect cup - from bean to brew - in every
@@ -85,12 +85,12 @@ export default {
         />
         <source
           :srcset="`./src/assets/img/about/tablet/image-commitment.jpg`"
-          media="(min-width: 601px)"
+          media="(max-width: 1199px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/about/tablet/image-commitment.jpg`"
+          :srcset="`./src/assets/img/about/desktop/image-commitment.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
           alt="decorative image of coffee"
@@ -120,41 +120,45 @@ export default {
     </section>
 
     <section class="quality-container">
-      <picture>
-        <source
-          :srcset="`./src/assets/img/about/mobile/image-quality.jpg`"
-          media="(max-width: 600px)"
-          type="image/jpg"
-          alt="decorative image of coffee"
-        />
-        <source
-          :srcset="`./src/assets/img/about/tablet/image-quality.jpg`"
-          media="(min-width: 601px)"
-          type="image/jpg"
-          alt="decorative image of coffee"
-        />
-        <source
-          :srcset="`./src/assets/img/about/tablet/image-quality.jpg`"
-          media="(min-width: 1200px)"
-          type="image/jpg"
-          alt="decorative image of coffee"
-        />
-        <img
-          :src="`./src/assets/img/home/desktop/image-quality.jpg`"
-          alt="decorative image of coffee"
-          class="quality-img"
-        />
-      </picture>
-      <div class="quality-content-container">
-        <h2 class="quality-heading">Uncompromising quality</h2>
-        <p class="quality-paragraph">
-          Although we work with growers who pay close attention to all stages of
-          harvest and processing, we employ, on our end, a rigorous quality
-          control program to avoid over-roasting or baking the coffee dry. Every
-          bag of coffee is tagged with a roast date and batch number. Our goal
-          is to roast consistent, user-friendly coffee, so that brewing is easy
-          and enjoyable.
-        </p>
+      <div class="quality-img-container">
+        <picture>
+          <source
+            :srcset="`./src/assets/img/about/mobile/image-quality.jpg`"
+            media="(max-width: 600px)"
+            type="image/jpg"
+            alt="decorative image of coffee"
+          />
+          <source
+            :srcset="`./src/assets/img/about/tablet/image-quality.jpg`"
+            media="(max-width: 1199px)"
+            type="image/jpg"
+            alt="decorative image of coffee"
+          />
+          <source
+            :srcset="`./src/assets/img/about/desktop/image-quality.jpg`"
+            media="(min-width: 1200px)"
+            type="image/jpg"
+            alt="decorative image of coffee"
+          />
+          <img
+            :src="`./src/assets/img/home/desktop/image-quality.jpg`"
+            alt="decorative image of coffee"
+            class="quality-img"
+          />
+        </picture>
+      </div>
+      <div class="quality-background">
+        <div class="quality-content-container">
+          <h2 class="quality-heading">Uncompromising quality</h2>
+          <p class="quality-paragraph">
+            Although we work with growers who pay close attention to all stages
+            of harvest and processing, we employ, on our end, a rigorous quality
+            control program to avoid over-roasting or baking the coffee dry.
+            Every bag of coffee is tagged with a roast date and batch number.
+            Our goal is to roast consistent, user-friendly coffee, so that
+            brewing is easy and enjoyable.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -189,19 +193,22 @@ export default {
 <style lang="scss">
 .about-hero-container {
   min-height: 25rem;
+
+  @include desktop-breakpoint {
+    min-height: 28.125rem;
+  }
 }
 
 .about-hero-content-container {
-  padding-left: 3.62rem !important;
-}
+  padding: 0 1.5rem;
 
-.about-heading {
-  padding-left: 0 !important;
-}
+  @include tablet-breakpoint {
+    padding-left: 3.62rem;
+  }
 
-.about-paragraph {
-  min-width: 24.875rem;
-  padding-left: 0 !important;
+  @include desktop-breakpoint {
+    padding-left: 5.31rem;
+  }
 }
 
 .main-about-heading {
@@ -212,13 +219,29 @@ export default {
   text-transform: uppercase;
   color: $light-cream;
   padding: 0 1.5rem 1.5rem 1.5rem;
+
+  @include tablet-breakpoint {
+    padding-left: 0 !important;
+  }
+
+  @include desktop-breakpoint {
+    font-size: 2.5rem;
+  }
 }
 
 .main-about-paragraph {
   @include app-body;
   color: $light-cream;
-  padding: 0 1.5rem 1.5rem 1.5rem;
   opacity: 0.8;
+
+  @include tablet-breakpoint {
+    min-width: 24.875rem;
+  }
+
+  @include desktop-breakpoint {
+    font-size: 1rem;
+    min-width: 27.8125rem;
+  }
 }
 
 .commitment-container {
@@ -228,6 +251,11 @@ export default {
     text-align: left;
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  @include desktop-breakpoint {
+    padding: 0 5.31rem;
+    margin-bottom: 7.5rem;
   }
 }
 
@@ -247,6 +275,13 @@ export default {
   @include tablet-breakpoint {
     margin-bottom: 10.5rem;
   }
+
+  @include desktop-breakpoint {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .commitment-heading {
@@ -258,10 +293,28 @@ export default {
 
 .commitment-paragraph {
   @include app-body;
+
+  @include desktop-breakpoint {
+    font-size: 1rem;
+    line-height: 1.625;
+  }
 }
 
 .quality-container {
   text-align: center;
+
+  @include desktop-breakpoint {
+    /* since we're using postion relative on image; pushes whitespace below */
+    margin-bottom: -10.5rem;
+  }
+}
+
+.quality-img-container {
+  @include desktop-breakpoint {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5rem;
+  }
 }
 
 .quality-img {
@@ -273,9 +326,13 @@ export default {
   @include tablet-breakpoint {
     height: 20rem;
   }
+
+  @include desktop-breakpoint {
+    height: 29.625rem;
+  }
 }
 
-.quality-content-container {
+.quality-background {
   min-height: 31.81rem;
   background-color: $dark-grey;
   position: relative;
@@ -290,6 +347,20 @@ export default {
     /* calc of image above height */
     top: calc(-20rem / 2);
   }
+
+  @include desktop-breakpoint {
+    min-height: 29.625rem;
+    /* calc of image above height */
+    top: calc(29.625rem / -1.25);
+  }
+}
+
+.quality-content-container {
+  @include desktop-breakpoint {
+    max-width: 33.75rem;
+    text-align: left;
+    margin-left: 5.31rem;
+  }
 }
 
 .quality-heading {
@@ -302,6 +373,11 @@ export default {
   @include tablet-breakpoint {
     padding-top: 14rem;
   }
+
+  @include desktop-breakpoint {
+    margin: 0 0 2.5rem 0;
+    padding-top: 6.25rem;
+  }
 }
 
 .quality-paragraph {
@@ -311,6 +387,12 @@ export default {
 
   @include tablet-breakpoint {
     padding: 0 4.62rem;
+  }
+
+  @include desktop-breakpoint {
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.625;
   }
 }
 
@@ -322,6 +404,10 @@ export default {
     margin-bottom: 9rem;
     text-align: left;
   }
+
+  @include desktop-breakpoint {
+    margin: 0 5.31rem 10.5rem 5.31rem;
+  }
 }
 
 .location-content-container {
@@ -329,6 +415,10 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.62rem;
+  }
+
+  @include desktop-breakpoint {
+    grid-gap: 5.94rem;
   }
 }
 
@@ -351,10 +441,21 @@ export default {
 .location-heading {
   @include header-2;
   margin-bottom: 1.38rem;
+
+  @include desktop-breakpoint {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.125;
+  }
 }
 
 .location-paragraph {
   @include app-body;
   margin-bottom: 5rem;
+
+  @include desktop-breakpoint {
+    font-size: 1rem;
+    line-height: 1.625;
+  }
 }
 </style>
