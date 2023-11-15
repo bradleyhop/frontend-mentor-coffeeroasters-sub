@@ -35,30 +35,35 @@ export default {
       checkoutBtnDisabled: true,
       // hide modal by default
       showModal: false,
-      // question indactor menu for desktop
-      questionIndactor: Object.freeze([
+      // question indactor menu for desktop; id must match customerPlan id's
+      questionIndicator: Object.freeze([
         {
-          id: 0,
+          id: 'qiPref',
+          link: 'how',
           numb: '01',
           title: 'Prefereneces',
         },
         {
-          id: 1,
+          id: 'qiType',
+          link: 'type',
           numb: '02',
           title: 'Bean Type',
         },
         {
-          id: 2,
+          id: 'qiSize',
+          link: 'size',
           numb: '03',
           title: 'Quantity',
         },
         {
-          id: 3,
+          id: 'qiGrind',
+          link: 'grind',
           numb: '04',
           title: 'Grind Option',
         },
         {
-          id: 4,
+          id: 'qiFreq',
+          link: 'frequency',
           numb: '05',
           title: 'Deliveries',
         },
@@ -100,6 +105,14 @@ export default {
         this.checkoutBtnDisabled = true;
       }
     },
+
+    /*
+     * <a href> isn't jumping to #id (maybe because of being parallel to the menu and
+     * inside a grid?), so using JS to make the jump; used in desktop viewport
+     */
+    jumpToLink(linky) {
+      document.getElementById(linky).scrollIntoView({ behavior: 'smooth' });
+    },
   },
 
   watch: {
@@ -107,20 +120,23 @@ export default {
       // disable grind question, close section if open, and clear any
       //  selections the user made before selecting coffee type
       handler() {
-        // using vanilla JS since accordians are rendered in a loop and we only
+        // using vanilla JS since accordions are rendered in a loop and we only
         //  need one group of accordions
         const grindEl = document.getElementById('grind');
+        // grind question indicator on desktop viewport
+        const grindQI = document.getElementById('qiGrind');
 
         if (this.customerPlan.plan.how === 'Capsule') {
           // add class to disable user selection
-          grindEl.classList.add('disabled');
+          grindEl.classList.add('disableSelection');
+          grindQI.classList.add('qiDisabled');
           // close grind selection details if open
           if (grindEl.hasAttribute('open')) {
             grindEl.removeAttribute('open');
           }
           if (this.customerPlan.plan.grind) {
-            // remove grind property from customerPlan
-            delete this.customerPlan.plan.grind;
+            // remove grind property from customerPlan; do not 'delete'!
+            this.customerPlan.plan.grind = '';
             // remove any active class selections from coffee array object
             // 'grind'; isSelected property will only be true if user made a
             // selection
@@ -130,7 +146,8 @@ export default {
           }
         } else {
           // remove class to enable user selection
-          grindEl.classList.remove('disabled');
+          grindEl.classList.remove('disableSelection');
+          grindQI.classList.remove('qiDisabled');
         }
       },
     },
@@ -200,16 +217,29 @@ export default {
     <section class="select-plan-container">
       <!-- tbh, this submenu is a mess of a design; like, why? -->
       <div class="question-container">
-        <div
-          v-for="question in questionIndactor"
-          :key="question.id"
-          class="question-indicator-content"
-        >
-          <span class="question-numb-menu">{{ question.numb }}</span
-          >&nbsp;
-          <span class="question-title-menu">{{ question.title }}</span>
+        <div class="question-sticky-container">
+          <div
+            v-for="question in questionIndicator"
+            :key="question.id"
+            class="question-indicator-content"
+            :id="question.id"
+            @click="jumpToLink(question.link)"
+            title="jump to selection choice"
+          >
+            <span
+              class="question-numb-menu"
+              :class="{ questionSelected: question.isSelected }"
+              >{{ question.numb }}</span
+            >&nbsp;
+            <span
+              class="question-title-menu"
+              :class="{ questionSelected: question.isSelected }"
+              >{{ question.title }}</span
+            >
+          </div>
         </div>
       </div>
+
       <div class="selction-accordian-container">
         <div
           v-for="selection in planSelections"
@@ -244,7 +274,7 @@ export default {
                 "
               >
                 <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
-                <!-- recactively show total based on grind selection -->
+                <!-- reactively show total based on grind selection -->
                 <p v-if="selection.selectionType === 'frequency'">
                   &dollar;{{ customerPlan.plan.costs[plan.id].toFixed(2)
                   }}{{ plan.selectionDescription }}
@@ -356,8 +386,14 @@ export default {
     font-size: 1.5rem;
     font-weight: 900;
     line-height: 1.33;
-    color: #333d4b; /* selection color active */
+    color: rgba(51, 61, 75, 0.4);
   }
+}
+
+.question-sticky-container {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
 }
 
 .question-indicator-content {
@@ -373,7 +409,20 @@ export default {
     &:last-child {
       border-bottom: none;
     }
+
+    &:hover {
+      cursor: pointer;
+      color: $light-cyan;
+      opacity: 1;
+    }
   }
+}
+
+.qiDisabled {
+  color: rgba(51, 61, 75, 0.2022);
+  cursor: not-allowed;
+  user-select: none; /* prevents text selection */
+  pointer-events: none; /* prevents click events */
 }
 
 .selection-container {
@@ -385,7 +434,7 @@ export default {
   user-select: none;
 }
 
-.disabled {
+.disableSelection {
   cursor: not-allowed;
   user-select: none; /* prevents text selection */
   pointer-events: none; /* prevents click events */
