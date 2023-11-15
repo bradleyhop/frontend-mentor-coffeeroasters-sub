@@ -35,6 +35,34 @@ export default {
       checkoutBtnDisabled: true,
       // hide modal by default
       showModal: false,
+      // question indactor menu for desktop
+      questionIndactor: Object.freeze([
+        {
+          id: 0,
+          numb: '01',
+          title: 'Prefereneces',
+        },
+        {
+          id: 1,
+          numb: '02',
+          title: 'Bean Type',
+        },
+        {
+          id: 2,
+          numb: '03',
+          title: 'Quantity',
+        },
+        {
+          id: 3,
+          numb: '04',
+          title: 'Grind Option',
+        },
+        {
+          id: 4,
+          numb: '05',
+          title: 'Deliveries',
+        },
+      ]),
     };
   },
 
@@ -139,7 +167,7 @@ export default {
         />
         <source
           :srcset="`./src/assets/img/plan/tablet/image-hero-blackcup.jpg`"
-          media="(min-width: 601px)"
+          media="(max-width: 1199px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
@@ -170,50 +198,64 @@ export default {
     </section>
 
     <section class="select-plan-container">
-      <div
-        v-for="selection in planSelections"
-        :key="selection.id"
-        class="selection-container"
-      >
-        <details class="select-plan-details" :id="selection.selectionType">
-          <summary class="select-plan-summary">
-            <h3 class="question-title">{{ selection.selectionTitle }}</h3>
-            <div class="arrow-container">
-              <img
-                class="arrow-icon"
-                :src="`./src/assets/img/plan/desktop/icon-arrow.svg`"
-                alt="arrow icon indicating selection open or close"
-              />
+      <!-- tbh, this submenu is a mess of a design; like, why? -->
+      <div class="question-container">
+        <div
+          v-for="question in questionIndactor"
+          :key="question.id"
+          class="question-indicator-content"
+        >
+          <span class="question-numb-menu">{{ question.numb }}</span
+          >&nbsp;
+          <span class="question-title-menu">{{ question.title }}</span>
+        </div>
+      </div>
+      <div class="selction-accordian-container">
+        <div
+          v-for="selection in planSelections"
+          :key="selection.id"
+          class="selection-container"
+        >
+          <details class="select-plan-details" :id="selection.selectionType">
+            <summary class="select-plan-summary">
+              <h3 class="question-title">{{ selection.selectionTitle }}</h3>
+              <div class="arrow-container">
+                <img
+                  class="arrow-icon"
+                  :src="`./src/assets/img/plan/desktop/icon-arrow.svg`"
+                  alt="arrow icon indicating selection open or close"
+                />
+              </div>
+            </summary>
+            <!-- next container for animation, see mounted() -->
+            <div class="content-wrapper" :id="`planDetails${selection.id}`">
+              <div
+                v-for="plan in selection.selections"
+                :key="plan.id"
+                class="select-plan-selection-container"
+                :class="{ activeChoice: plan.isSelected }"
+                :value="plan.cost"
+                @click="
+                  customerPlan.setPlan(
+                    selection.selectionType,
+                    plan.selectionName,
+                  ),
+                    toggleActiveSelect(selection.id, plan.id)
+                "
+              >
+                <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
+                <!-- recactively show total based on grind selection -->
+                <p v-if="selection.selectionType === 'frequency'">
+                  &dollar;{{ customerPlan.plan.costs[plan.id].toFixed(2)
+                  }}{{ plan.selectionDescription }}
+                </p>
+                <p v-else class="select-plan-copy">
+                  {{ plan.selectionDescription }}
+                </p>
+              </div>
             </div>
-          </summary>
-          <!-- next container for animation, see mounted() -->
-          <div class="content-wrapper" :id="`planDetails${selection.id}`">
-            <div
-              v-for="plan in selection.selections"
-              :key="plan.id"
-              class="select-plan-selection-container"
-              :class="{ activeChoice: plan.isSelected }"
-              :value="plan.cost"
-              @click="
-                customerPlan.setPlan(
-                  selection.selectionType,
-                  plan.selectionName,
-                ),
-                  toggleActiveSelect(selection.id, plan.id)
-              "
-            >
-              <h4 class="select-plan-title">{{ plan.selectionName }}</h4>
-              <!-- recactively show total based on grind selection -->
-              <p v-if="selection.selectionType === 'frequency'">
-                &dollar;{{ customerPlan.plan.costs[plan.id].toFixed(2)
-                }}{{ plan.selectionDescription }}
-              </p>
-              <p v-else class="select-plan-copy">
-                {{ plan.selectionDescription }}
-              </p>
-            </div>
-          </div>
-        </details>
+          </details>
+        </div>
       </div>
     </section>
 
@@ -273,22 +315,64 @@ export default {
 .steps-container {
   background-color: $dark-grey-blue;
   border-radius: 0.625rem;
+  color: $white;
   /* override parent padding */
   margin: 0 -1.5rem 7.5rem -1.5rem;
   text-align: center;
   padding: 5rem 0;
-  color: $white;
 
   @include tablet-breakpoint {
+    /* override parent padding */
     margin: 0 -2.5rem 9rem -2.5rem;
     padding: 6.06rem 2.5rem;
     text-align: left;
+  }
+
+  @include desktop-breakpoint {
+    margin: 0 0 10.25rem 0;
+    padding: 6.69rem 5.31rem;
   }
 }
 
 .select-plan-container {
   @include tablet-breakpoint {
     margin-bottom: 9rem;
+  }
+
+  @include desktop-breakpoint {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 14rem;
+  }
+}
+
+.question-container {
+  display: none;
+
+  @include desktop-breakpoint {
+    display: block;
+    margin-left: 5.31rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.33;
+    color: #333d4b; /* selection color active */
+  }
+}
+
+.question-indicator-content {
+  @include desktop-breakpoint {
+    padding: 1.5rem 0;
+    border-bottom: 0.0625rem solid rgba(131, 136, 143, 0.25);
+    max-width: 15.9375rem;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
