@@ -147,6 +147,7 @@ export default {
         } else {
           // remove class to enable user selection
           grindEl.classList.remove('disableSelection');
+          // enable grind question indicator
           grindQI.classList.remove('qiDisabled');
         }
       },
@@ -240,7 +241,7 @@ export default {
         </div>
       </div>
 
-      <div class="selction-accordian-container">
+      <div class="selection-accordian-container">
         <div
           v-for="selection in planSelections"
           :key="selection.id"
@@ -286,27 +287,27 @@ export default {
             </div>
           </details>
         </div>
+
+        <section class="summary-container">
+          <h2 class="summary-title">ORDER SUMMARY</h2>
+          <OrderSummary />
+        </section>
+
+        <p class="checkout-btn-container">
+          <AppButton
+            class="checkout-btn"
+            text="Create My Plan!"
+            id="CheckoutBtn"
+            :disabled="checkoutBtnDisabled"
+            @click="showModal = true"
+          />
+
+          <Teleport to="body">
+            <CheckoutModal :show="showModal" @close="showModal = !showModal" />
+          </Teleport>
+        </p>
       </div>
     </section>
-
-    <section class="summary-container">
-      <h2 class="summary-title">ORDER SUMMARY</h2>
-      <OrderSummary />
-    </section>
-
-    <div class="checkout-btn-container">
-      <AppButton
-        class="checkout-btn"
-        text="Create My Plan!"
-        id="CheckoutBtn"
-        :disabled="checkoutBtnDisabled"
-        @click="showModal = true"
-      />
-
-      <Teleport to="body">
-        <CheckoutModal :show="showModal" @close="showModal = !showModal" />
-      </Teleport>
-    </div>
   </div>
 </template>
 
@@ -425,6 +426,12 @@ export default {
   pointer-events: none; /* prevents click events */
 }
 
+.selection-accordian-container {
+  @include desktop-breakpoint {
+    margin-right: 5.31rem;
+  }
+}
+
 .selection-container {
   margin-bottom: 2.5rem;
   list-style: none;
@@ -539,6 +546,7 @@ export default {
   @include tablet-breakpoint {
     padding: 1.94rem 2.75rem;
     margin-bottom: 2.5rem;
+    margin-top: 5rem;
   }
 }
 
@@ -557,6 +565,10 @@ export default {
 
   @include tablet-breakpoint {
     margin-bottom: 9rem;
+  }
+
+  @include desktop-breakpoint {
+    float: right;
   }
 }
 </style>
