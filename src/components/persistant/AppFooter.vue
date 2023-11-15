@@ -18,12 +18,12 @@ export default {
 <template>
   <footer class="footer-container">
     <div class="footer-logo-container">
-    <img
-      :src="`./src/assets/img/shared/desktop/logo-white-text.svg`"
-      class="footer-logo"
-      alt="logo"
-    />
-  </div>
+      <img
+        :src="`./src/assets/img/shared/desktop/logo-white-text.svg`"
+        class="footer-logo"
+        alt="logo"
+      />
+    </div>
     <div class="footer-nav-container">
       <RouterLink to="/" class="footer-nav-link"> HOME </RouterLink>
       <RouterLink to="/about" class="footer-nav-link"> ABOUT </RouterLink>
