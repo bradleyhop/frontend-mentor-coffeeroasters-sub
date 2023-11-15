@@ -41,8 +41,8 @@ export default {
       customerPlan.plan.how === 'Capsule'
         ? ''
         : customerPlan.plan.grind
-        ? customerPlan.plan.grind
-        : '____'
+          ? customerPlan.plan.grind
+          : '____'
     }}</span
     >, sent to me
     <span class="summary-highlight">{{

@@ -95,6 +95,11 @@ export default {
   @include tablet-breakpoint {
     margin: auto 7.12rem;
   }
+
+  @include desktop-breakpoint {
+    margin: auto;
+    max-width: 37.5rem;
+  }
 }
 
 .modal-header-container {
@@ -142,6 +147,11 @@ export default {
 
   @include tablet-breakpoint {
     margin-bottom: 2.94rem;
+  }
+
+  @include desktop-breakpoint {
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 }
 

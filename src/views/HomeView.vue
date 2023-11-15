@@ -124,11 +124,11 @@ export default {
               class="benefit-card"
             >
               <div class="benefit-img-container">
-              <img
-                :src="`./src/assets/img/home/desktop/${benefit.img}`"
-                class="benefit-img"
-              />
-            </div>
+                <img
+                  :src="`./src/assets/img/home/desktop/${benefit.img}`"
+                  class="benefit-img"
+                />
+              </div>
               <div class="benefit-content">
                 <h3 class="benefit-title">{{ benefit.title }}</h3>
                 <p class="benefit-copy">{{ benefit.copy }}</p>
@@ -160,7 +160,6 @@ export default {
   @include desktop-breakpoint {
     margin-bottom: 12.5rem;
   }
-
 }
 
 .main-heading {
