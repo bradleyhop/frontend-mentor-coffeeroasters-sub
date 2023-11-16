@@ -19,7 +19,7 @@ export default {
   <footer class="footer-container">
     <div class="footer-logo-container">
       <img
-        :src="`./src/assets/img/shared/desktop/logo-white-text.svg`"
+        :src="`./img/shared/desktop/logo-white-text.svg`"
         class="footer-logo"
         alt="logo"
       />

@@ -15,13 +15,13 @@ export default {
     <button @click="toggleMenu = !toggleMenu" class="header-btn">
       <img
         v-if="!toggleMenu"
-        :src="`./src/assets/img/shared/mobile/icon-hamburger.svg`"
+        :src="`./img/shared/mobile/icon-hamburger.svg`"
         alt="mobile menu open"
         class="mobile-btn-img"
       />
       <img
         v-else
-        :src="`./src/assets/img/shared/mobile/icon-close.svg`"
+        :src="`./img/shared/mobile/icon-close.svg`"
         alt="mobile menu close"
         class="mobile-btn-img"
       />

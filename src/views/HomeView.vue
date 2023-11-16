@@ -44,25 +44,25 @@ export default {
     <section class="hero-container">
       <picture>
         <source
-          :srcset="`./src/assets/img/home/mobile/image-hero-coffeepress.jpg`"
+          :srcset="`./img/home/mobile/image-hero-coffeepress.jpg`"
           media="(max-width: 600px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/home/tablet/image-hero-coffeepress.jpg`"
+          :srcset="`./img/home/tablet/image-hero-coffeepress.jpg`"
           media="(max-width: 1199px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/home/desktop/image-hero-coffeepress.jpg`"
+          :srcset="`./img/home/desktop/image-hero-coffeepress.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <img
-          :src="`./src/assets/img/home/desktop/image-hero-coffeepress.jpg`"
+          :src="`./img/home/desktop/image-hero-coffeepress.jpg`"
           alt="decorative image of coffee"
           class="hero-img"
         />
@@ -94,7 +94,7 @@ export default {
         >
           <div class="coffee-img-container">
             <img
-              :src="`./src/assets/img/home/desktop/${coffee.src}`"
+              :src="`./img/home/desktop/${coffee.src}`"
               alt="decorative image of coffee"
               class="coffee-img"
             />
@@ -125,7 +125,7 @@ export default {
             >
               <div class="benefit-img-container">
                 <img
-                  :src="`./src/assets/img/home/desktop/${benefit.img}`"
+                  :src="`./img/home/desktop/${benefit.img}`"
                   class="benefit-img"
                 />
               </div>

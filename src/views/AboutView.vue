@@ -7,7 +7,7 @@ export default {
       // location content
       locations: Object.freeze([
         {
-          img: './src/assets/img/about/desktop/illustration-uk.svg',
+          img: './img/about/desktop/illustration-uk.svg',
           country: 'United Kingdom',
           street: '68 Asfordby Rd',
           city: 'Alcaston',
@@ -15,7 +15,7 @@ export default {
           tel: '+44 1241 918425',
         },
         {
-          img: './src/assets/img/about/desktop/illustration-canada.svg',
+          img: './img/about/desktop/illustration-canada.svg',
           country: 'Canada',
           street: '1528 Eglinton Avenue',
           city: 'Toronto',
@@ -23,7 +23,7 @@ export default {
           tel: '+1 416 485 2997',
         },
         {
-          img: './src/assets/img/about/desktop/illustration-australia.svg',
+          img: './img/about/desktop/illustration-australia.svg',
           country: 'Australia',
           street: '36 Swanston Street',
           city: 'Kewell',
@@ -41,25 +41,25 @@ export default {
     <section class="hero-container about-hero-container">
       <picture>
         <source
-          :srcset="`./src/assets/img/about/mobile/image-hero-whitecup.jpg`"
+          :srcset="`./img/about/mobile/image-hero-whitecup.jpg`"
           media="(max-width: 600px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/about/tablet/image-hero-whitecup.jpg`"
+          :srcset="`./img/about/tablet/image-hero-whitecup.jpg`"
           media="(max-width: 1100px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/about/desktop/image-hero-whitecup.jpg`"
+          :srcset="`./img/about/desktop/image-hero-whitecup.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <img
-          :src="`./src/assets/img/home/desktop/image-hero-whitecup.jpg`"
+          :src="`./img/home/desktop/image-hero-whitecup.jpg`"
           alt="decorative image of coffee"
           class="hero-img"
         />
@@ -78,25 +78,25 @@ export default {
     <section class="commitment-container">
       <picture>
         <source
-          :srcset="`./src/assets/img/about/mobile/image-commitment.jpg`"
+          :srcset="`./img/about/mobile/image-commitment.jpg`"
           media="(max-width: 600px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/about/tablet/image-commitment.jpg`"
+          :srcset="`./img/about/tablet/image-commitment.jpg`"
           media="(max-width: 1199px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/about/desktop/image-commitment.jpg`"
+          :srcset="`./img/about/desktop/image-commitment.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <img
-          :src="`./src/assets/img/home/desktop/image-commitment.jpg`"
+          :src="`./img/home/desktop/image-commitment.jpg`"
           alt="decorative image of coffee"
           class="commitment-img"
         />
@@ -123,25 +123,25 @@ export default {
       <div class="quality-img-container">
         <picture>
           <source
-            :srcset="`./src/assets/img/about/mobile/image-quality.jpg`"
+            :srcset="`./img/about/mobile/image-quality.jpg`"
             media="(max-width: 600px)"
             type="image/jpg"
             alt="decorative image of coffee"
           />
           <source
-            :srcset="`./src/assets/img/about/tablet/image-quality.jpg`"
+            :srcset="`./img/about/tablet/image-quality.jpg`"
             media="(max-width: 1199px)"
             type="image/jpg"
             alt="decorative image of coffee"
           />
           <source
-            :srcset="`./src/assets/img/about/desktop/image-quality.jpg`"
+            :srcset="`./img/about/desktop/image-quality.jpg`"
             media="(min-width: 1200px)"
             type="image/jpg"
             alt="decorative image of coffee"
           />
           <img
-            :src="`./src/assets/img/home/desktop/image-quality.jpg`"
+            :src="`./img/home/desktop/image-quality.jpg`"
             alt="decorative image of coffee"
             class="quality-img"
           />
