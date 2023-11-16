@@ -15,7 +15,7 @@ export default {
   <button class="app-button">{{ text }}</button>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .app-button {
   background-color: $dark-cyan;
   border-radius: 0.375rem;
