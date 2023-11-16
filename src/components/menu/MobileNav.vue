@@ -49,7 +49,7 @@ export default {
   </nav>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .mobile-btn-container {
   height: 1.1rem;
 }
