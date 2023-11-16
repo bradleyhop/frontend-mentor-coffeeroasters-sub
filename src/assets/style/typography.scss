@@ -1,4 +1,9 @@
 // TODO: Add clamp for font-size and line-height
+@font-face {
+  font-family: 'Fraunces 9pt Black';
+  font-display: swap;
+  src: url('./fonts/Fraunces9pt-Black.woff2') format('woff2');
+}
 
 @mixin title-alt-big {
   font-family: 'Fraunces', serif;
@@ -8,28 +13,28 @@
 }
 
 @mixin header-1 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: clamp(2.5rem, calc(1rem + 5vw), 4.5rem);
   font-weight: 900;
   line-height: 1;
 }
 
 @mixin header-2 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: clamp(1.75rem, calc(1rem + 1vw), 2.5rem);
   font-weight: 900;
   line-height: 1.5;
 }
 
 @mixin header-3 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: clamp(1.7rem, calc(1rem + 2vw), 2rem);
   font-weight: 900;
   line-height: 1.13;
 }
 
 @mixin header-4 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: 1.5rem;
   font-weight: 900;
   line-height: 1.33;

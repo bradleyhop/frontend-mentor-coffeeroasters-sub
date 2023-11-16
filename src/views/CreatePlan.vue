@@ -320,7 +320,7 @@ export default {
 
 .main-plans-heading {
   color: $light-cream;
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: 2.5rem;
   font-weight: 900;
   line-height: 1.1;
@@ -383,7 +383,7 @@ export default {
   @include desktop-breakpoint {
     display: block;
     margin-left: 5.31rem;
-    font-family: 'Fraunces', serif;
+    font-family: 'Fraunces 9pt Black', serif;
     font-size: 1.5rem;
     font-weight: 900;
     line-height: 1.33;
@@ -465,7 +465,7 @@ export default {
 
 .question-title {
   color: $grey;
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: 1.5rem;
   font-weight: 900;
   line-height: 1.16;
