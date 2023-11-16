@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 
 const router = createRouter({
+  mode: 'history', // to use with GH Pages
+
   history: createWebHistory(import.meta.env.BASE_URL),
 
   scrollBehavior(to, from, savedPosition) {
