@@ -40,7 +40,7 @@ export default {
 
   @include desktop-breakpoint {
     display: flex;
-    width: 77%;
+    width: 77.75%;
   }
 
   @media only screen and (min-width: 1900px) {
@@ -66,7 +66,7 @@ export default {
 
 .how-it-works-numb {
   color: $pale-orange;
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: 4.5rem;
   font-weight: 900;
   line-height: 1;

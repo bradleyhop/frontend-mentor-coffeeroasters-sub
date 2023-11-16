@@ -52,13 +52,11 @@
   justify-content: center;
 
   @include tablet-breakpoint {
-    max-width: 25rem;
     text-align: left;
     padding-left: 3rem;
   }
 
   @include desktop-breakpoint {
-    max-width: 30.8125rem;
     padding-left: 5.31rem;
   }
 }

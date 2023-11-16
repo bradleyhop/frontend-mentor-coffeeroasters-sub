@@ -90,10 +90,11 @@ export default {
 }
 
 .mobile-nav-link {
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
   color: $dark-grey-blue;
+  font-family: 'Fraunces 9pt Black', serif;
+  font-size: 1.5rem;
   font-weight: 900;
   line-height: 1.33;
+  margin-bottom: 2rem;
 }
 </style>

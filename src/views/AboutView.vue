@@ -212,11 +212,10 @@ export default {
 }
 
 .main-about-heading {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: 1.75rem;
   font-weight: 900;
   line-height: 1;
-  text-transform: uppercase;
   color: $light-cream;
   padding: 0 1.5rem 1.5rem 1.5rem;
 
@@ -235,12 +234,12 @@ export default {
   opacity: 0.8;
 
   @include tablet-breakpoint {
-    min-width: 24.875rem;
+    max-width: 24.875rem;
   }
 
   @include desktop-breakpoint {
     font-size: 1rem;
-    min-width: 27.8125rem;
+    max-width: 27.8125rem;
   }
 }
 

@@ -168,10 +168,12 @@ export default {
   padding: 0 1.5rem 1.5rem 1.5rem;
 
   @include tablet-breakpoint {
+    max-width: 25rem;
     padding: 0 0 1.5rem 0;
   }
 
   @include desktop-breakpoint {
+    max-width: 35rem;
     padding-bottom: 2rem;
   }
 }
@@ -183,10 +185,13 @@ export default {
   opacity: 0.8;
 
   @include tablet-breakpoint {
+    max-width: 24.875rem;
     padding: 0 0 1.5rem 0;
   }
 
   @include desktop-breakpoint {
+    font-size: 1rem;
+    max-width: 27.8rem;
     padding-bottom: 3.5rem;
   }
 }
@@ -208,7 +213,7 @@ export default {
 }
 
 .collection-heading {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: 2.5rem;
   font-weight: 900;
   background: linear-gradient(180deg, $grey 0%, $light-cream 100%);
@@ -219,7 +224,11 @@ export default {
     font-size: 6rem;
   }
 
-  @include desktop-breakpoint {
+  @media screen and (min-width: 1200px) {
+    font-size: 8.75rem;
+  }
+
+  @media screen and (min-width: 1400px) {
     font-size: 9.375rem;
   }
 }

@@ -21,7 +21,7 @@ export default {
   border-radius: 0.375rem;
   cursor: pointer;
   color: $light-cream;
-  font-family: Fraunces;
+  font-family: 'Fraunces 9pt Black', serif;
   font-size: 1.125rem;
   font-weight: 900;
   line-height: 1.39;
