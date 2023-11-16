@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       // native-like behavior with forward/back buttons
@@ -12,6 +13,7 @@ const router = createRouter({
       return { top: 0 };
     }
   },
+
   routes: [
     {
       path: '/',
@@ -27,6 +29,11 @@ const router = createRouter({
       path: '/createplan',
       name: 'CreatePlan',
       component: () => import('@/views/CreatePlan.vue'),
+    },
+    // catch-all
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/',
     },
   ],
 });

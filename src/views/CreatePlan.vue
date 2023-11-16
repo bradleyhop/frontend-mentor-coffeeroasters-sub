@@ -178,25 +178,25 @@ export default {
     <section class="hero-container plan-hero-conatiner">
       <picture>
         <source
-          :srcset="`./src/assets/img/plan/mobile/image-hero-blackcup.jpg`"
+          :srcset="`./img/plan/mobile/image-hero-blackcup.jpg`"
           media="(max-width: 600px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/plan/tablet/image-hero-blackcup.jpg`"
+          :srcset="`./img/plan/tablet/image-hero-blackcup.jpg`"
           media="(max-width: 1199px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <source
-          :srcset="`./src/assets/img/plan/desktop/image-hero-blackcup.jpg`"
+          :srcset="`./img/plan/desktop/image-hero-blackcup.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
           alt="decorative image of coffee"
         />
         <img
-          :src="`./src/assets/img/plan/desktop/image-hero-blackcup.jpg`"
+          :src="`./img/plan/desktop/image-hero-blackcup.jpg`"
           alt="decorative image of coffee"
           class="hero-img"
         />
@@ -253,7 +253,7 @@ export default {
               <div class="arrow-container">
                 <img
                   class="arrow-icon"
-                  :src="`./src/assets/img/plan/desktop/icon-arrow.svg`"
+                  :src="`./img/plan/desktop/icon-arrow.svg`"
                   alt="arrow icon indicating selection open or close"
                 />
               </div>

@@ -15,7 +15,7 @@ export default {
 <template>
   <header class="app-header">
     <img
-      :src="`./src/assets/img/shared/desktop/logo.svg`"
+      :src="`./img/shared/desktop/logo.svg`"
       alt="coffeeroasters logo"
       class="header-logo"
     />

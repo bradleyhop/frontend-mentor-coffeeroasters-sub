@@ -15,7 +15,7 @@ export default {
 
 <template>
   <img
-    :src="`./src/assets/img/shared/desktop/circles-line.svg`"
+    :src="`./img/shared/desktop/circles-line.svg`"
     alt="decorative"
     class="circles-line"
   />
