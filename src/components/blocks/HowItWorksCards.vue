@@ -94,6 +94,11 @@ export default {
 
 .how-it-works-copy {
   @include app-body;
+  padding: 0 1.5rem;
+
+  @include tablet-breakpoint {
+    padding: 0;
+  }
 
   @include desktop-breakpoint {
     font-size: 1rem;
