@@ -224,11 +224,11 @@ export default {
     font-size: 6rem;
   }
 
-  @media screen and (min-width: 1200px) {
-    font-size: 8.75rem;
+  @include desktop-breakpoint {
+    font-size: 8rem;
   }
 
-  @media screen and (min-width: 1400px) {
+  @include large-desktop-breakpoint {
     font-size: 9.375rem;
   }
 }
@@ -236,13 +236,17 @@ export default {
 .coffee-card-container {
   @include tablet-breakpoint {
     position: relative;
-    top: -3.25rem;
+    top: -2.75rem;
   }
 
   @include desktop-breakpoint {
     top: -5.5rem;
     display: flex;
     gap: 1.88rem;
+  }
+
+  @include large-desktop-breakpoint {
+    top: -5rem;
   }
 }
 
