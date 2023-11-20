@@ -1,5 +1,5 @@
 <script>
-import AppButton from '@/components/AppButton.vue';
+import AppButton from '@/components/ui/AppButton.vue';
 // coffee collection as list; more prone to future changes
 import coffees from '@/assets/data/coffeeCollection.js';
 // how it works steps block
