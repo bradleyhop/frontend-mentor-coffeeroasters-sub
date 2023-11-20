@@ -1,19 +1,23 @@
 import { defineStore } from 'pinia';
+import { useLocalStorage } from '@vueuse/core';
 
 export const useCustomerPlan = defineStore('customerPlan', {
-  state: () => ({
-    plan: {
-      how: '',
-      type: '',
-      size: '',
-      grind: '',
-      delivery: '',
-      frequency: '',
-      // index 0: weekly; 1: bi-weekly; 2: monthly; using an array for v-for rendering
-      costs: [],
-      totalCost: 0,
-    },
-  }),
+  state: () => {
+    return {
+      // check for local storage first before using default
+      plan: useLocalStorage('customerPlan', {
+        how: '',
+        type: '',
+        size: '',
+        grind: '',
+        delivery: '',
+        frequency: '',
+        // index 0: weekly; 1: bi-weekly; 2: monthly; using an array for v-for rendering
+        costs: [],
+        totalCost: 0,
+      })
+    };
+  },
 
   getters: {
     weeklyCost: (state) => {
