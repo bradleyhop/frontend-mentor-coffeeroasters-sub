@@ -5,9 +5,9 @@
  */
 
 // order summary text
-import OrderSummary from '@/components/OrderSummary.vue';
+import OrderSummary from '@/components/blocks/OrderSummary.vue';
 // app button for checkout
-import AppButton from '@/components/AppButton.vue';
+import AppButton from '@/components/ui/AppButton.vue';
 // cart stores
 import { useCustomerPlan } from '@/stores/customerPlan.js';
 

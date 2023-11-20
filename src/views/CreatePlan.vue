@@ -4,11 +4,11 @@ import planSelectionsData from '@/assets/data/planSelections.js';
 // accordion class
 import Accordian from '@/assets/js/Accordian.js';
 // summary paragraph text
-import OrderSummary from '@/components/OrderSummary.vue';
+import OrderSummary from '@/components/blocks/OrderSummary.vue';
 // app button for checkout
-import AppButton from '@/components/AppButton.vue';
+import AppButton from '@/components/ui/AppButton.vue';
 // checkout modal
-import CheckoutModal from '@/components/CheckoutModal.vue';
+import CheckoutModal from '@/components/modals/CheckoutModal.vue';
 // cart stores
 import { useCustomerPlan } from '@/stores/customerPlan.js';
 // steps card block
