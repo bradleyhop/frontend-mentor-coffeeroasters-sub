@@ -1,9 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router';
+/*
+ * NB: using HASH for history mode because GitHub Wegpages does not support dynamic
+ * routing on their servers. Using `createWebHistory` allows for view navigation to
+ * work within the app, but it won't work for direct navigation using the browser.
+ */
+import { createRouter, createWebHashHistory } from 'vue-router';
 // load home by default
 import HomeView from '@/views/HomeView.vue';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
 
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
