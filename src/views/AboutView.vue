@@ -440,6 +440,7 @@ export default {
 .location-heading {
   @include header-2;
   margin-bottom: 1.38rem;
+  min-height: 4.75rem;
 
   @include desktop-breakpoint {
     font-size: 2rem;
