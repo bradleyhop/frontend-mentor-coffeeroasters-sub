@@ -15,7 +15,7 @@ export const useCustomerPlan = defineStore('customerPlan', {
         // index 0: weekly; 1: bi-weekly; 2: monthly; using an array for v-for rendering
         costs: [],
         totalCost: 0,
-      })
+      }),
     };
   },
 

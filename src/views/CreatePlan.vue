@@ -181,19 +181,16 @@ export default {
           :srcset="`./img/plan/mobile/image-hero-blackcup.jpg`"
           media="(max-width: 600px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <source
           :srcset="`./img/plan/tablet/image-hero-blackcup.jpg`"
           media="(max-width: 1199px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <source
           :srcset="`./img/plan/desktop/image-hero-blackcup.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <img
           :src="`./img/plan/desktop/image-hero-blackcup.jpg`"

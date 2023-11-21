@@ -1,4 +1,4 @@
-import { createApp, watch } from 'vue';
+import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 // RESET CSS via npm package: https://www.npmjs.com/package/the-new-css-reset
 import 'the-new-css-reset/css/reset.css';

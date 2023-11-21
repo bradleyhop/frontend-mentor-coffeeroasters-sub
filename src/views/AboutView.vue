@@ -44,19 +44,16 @@ export default {
           :srcset="`./img/about/mobile/image-hero-whitecup.jpg`"
           media="(max-width: 600px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <source
           :srcset="`./img/about/tablet/image-hero-whitecup.jpg`"
           media="(max-width: 1100px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <source
           :srcset="`./img/about/desktop/image-hero-whitecup.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <img
           :src="`./img/home/desktop/image-hero-whitecup.jpg`"
@@ -81,19 +78,16 @@ export default {
           :srcset="`./img/about/mobile/image-commitment.jpg`"
           media="(max-width: 600px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <source
           :srcset="`./img/about/tablet/image-commitment.jpg`"
           media="(max-width: 1199px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <source
           :srcset="`./img/about/desktop/image-commitment.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <img
           :src="`./img/home/desktop/image-commitment.jpg`"
@@ -126,19 +120,16 @@ export default {
             :srcset="`./img/about/mobile/image-quality.jpg`"
             media="(max-width: 600px)"
             type="image/jpg"
-            alt="decorative image of coffee"
           />
           <source
             :srcset="`./img/about/tablet/image-quality.jpg`"
             media="(max-width: 1199px)"
             type="image/jpg"
-            alt="decorative image of coffee"
           />
           <source
             :srcset="`./img/about/desktop/image-quality.jpg`"
             media="(min-width: 1200px)"
             type="image/jpg"
-            alt="decorative image of coffee"
           />
           <img
             :src="`./img/home/desktop/image-quality.jpg`"
