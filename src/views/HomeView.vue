@@ -200,6 +200,10 @@ export default {
   @include desktop-breakpoint {
     padding: 0 5.25rem;
   }
+
+  @include desktop-breakpoint {
+    padding-bottom: 6.5rem;
+  }
 }
 
 .collection-heading-container {

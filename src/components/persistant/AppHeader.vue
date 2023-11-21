@@ -54,6 +54,10 @@ export default {
 
 .header-logo {
   height: 1.125rem;
+
+  @include tablet-breakpoint {
+    height: 1.625rem;
+  }
 }
 
 .mobile-nav {
