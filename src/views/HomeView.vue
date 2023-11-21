@@ -47,19 +47,16 @@ export default {
           :srcset="`./img/home/mobile/image-hero-coffeepress.jpg`"
           media="(max-width: 600px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <source
           :srcset="`./img/home/tablet/image-hero-coffeepress.jpg`"
           media="(max-width: 1199px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <source
           :srcset="`./img/home/desktop/image-hero-coffeepress.jpg`"
           media="(min-width: 1200px)"
           type="image/jpg"
-          alt="decorative image of coffee"
         />
         <img
           :src="`./img/home/desktop/image-hero-coffeepress.jpg`"
@@ -75,9 +72,9 @@ export default {
           your door, at your schedule.
         </p>
         <div class="call-to-action-button-container">
-          <RouterLink to="/createplan">
-            <AppButton text="Create your own plan" />
-          </RouterLink>
+          <AppButton text="Create your own plan">
+            <RouterLink to="/createplan" />
+          </AppButton>
         </div>
       </div>
     </section>
@@ -126,6 +123,7 @@ export default {
               <div class="benefit-img-container">
                 <img
                   :src="`./img/home/desktop/${benefit.img}`"
+                  :alt="benefit.title"
                   class="benefit-img"
                 />
               </div>
@@ -142,9 +140,9 @@ export default {
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
       <HowItWorksCards />
-      <RouterLink to="/createplan">
-        <AppButton text="Create your own plan" class="how-it-works-button" />
-      </RouterLink>
+      <AppButton text="Create your own plan" class="how-it-works-button">
+        <RouterLink to="/createplan" />
+      </AppButton>
     </section>
   </div>
 </template>

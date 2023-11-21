@@ -36,6 +36,7 @@ export default {
         href="https://www.facebook.com/"
         target="_blank"
         rel="noreferrer nofollow"
+        aria-label="Facebook"
       >
         <IconFacebook class="footer-social-link" />
       </a>
@@ -43,6 +44,7 @@ export default {
         href="https://www.twitter.com/"
         target="_blank"
         rel="noreferrer nofollow"
+        aria-label="Twitter"
       >
         <IconTwitter class="footer-social-link" />
       </a>
@@ -50,6 +52,7 @@ export default {
         href="https://www.instagram.com/"
         target="_blank"
         rel="noreferrer nofollow"
+        aria-label="Instagram"
       >
         <IconInsta class="footer-social-link" />
       </a>
