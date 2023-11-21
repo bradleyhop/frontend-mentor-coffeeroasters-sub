@@ -72,7 +72,7 @@ export default {
           your door, at your schedule.
         </p>
         <div class="call-to-action-button-container">
-          <AppButton text="Create your own plan">
+          <AppButton text="Create your plan">
             <RouterLink to="/createplan" />
           </AppButton>
         </div>
@@ -140,7 +140,7 @@ export default {
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
       <HowItWorksCards />
-      <AppButton text="Create your own plan" class="how-it-works-button">
+      <AppButton text="Create your plan" class="how-it-works-button">
         <RouterLink to="/createplan" />
       </AppButton>
     </section>
@@ -328,7 +328,7 @@ export default {
   }
 
   @include tablet-breakpoint {
-    min-height: 63.8125rem;
+    min-height: calc(63.8125rem - 5rem);
   }
 }
 
@@ -352,11 +352,12 @@ export default {
   text-align: center;
 
   @include tablet-breakpoint {
-    padding: 4rem 3.5rem;
+    padding: 3.5rem 4rem;
   }
 
   @include desktop-breakpoint {
-    padding: 4rem 0;
+    padding-top: 6.25rem;
+    padding-bottom: 5.38rem;
 
     & > p {
       font-size: 1rem;

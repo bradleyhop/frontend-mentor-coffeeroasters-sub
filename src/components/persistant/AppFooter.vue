@@ -80,6 +80,10 @@ export default {
   height: 1.5rem;
   margin: 3.38rem auto 3.03rem auto;
 
+  @include tablet-breakpoint {
+    height: 1.625rem;
+  }
+
   @include desktop-breakpoint {
     margin: 2.94rem 6.43rem 2.94rem 5.31rem;
   }
