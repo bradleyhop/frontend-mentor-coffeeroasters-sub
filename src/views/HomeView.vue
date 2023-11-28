@@ -72,9 +72,9 @@ export default {
           your door, at your schedule.
         </p>
         <div class="call-to-action-button-container">
-          <AppButton text="Create your plan">
-            <RouterLink to="/createplan" />
-          </AppButton>
+          <RouterLink to="/createplan" v-slot="{ navigate }">
+            <AppButton text="Create your plan" @click="navigate" role="link" />
+          </RouterLink>
         </div>
       </div>
     </section>
@@ -140,9 +140,14 @@ export default {
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
       <HowItWorksCards />
-      <AppButton text="Create your plan" class="how-it-works-button">
-        <RouterLink to="/createplan" />
-      </AppButton>
+      <RouterLink to="/createplan" v-slot="{ navigate }">
+        <AppButton
+          text="Create your plan"
+          class="how-it-works-button"
+          @click="navigate"
+          role="link"
+        />
+      </RouterLink>
     </section>
   </div>
 </template>
@@ -476,10 +481,6 @@ export default {
     padding: 0 3rem;
   }
 }
-
-/*
- * TODO: remove duplication; see main.scss
- */
 
 .how-it-works-heading {
   @include header-2;

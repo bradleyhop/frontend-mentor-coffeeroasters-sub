@@ -12,7 +12,9 @@ export default {
 </script>
 
 <template>
-  <button class="app-button">{{ text }}</button>
+  <button class="app-button">
+    {{ text }}
+  </button>
 </template>
 
 <style lang="scss" scoped>

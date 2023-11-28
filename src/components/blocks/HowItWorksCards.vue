@@ -14,13 +14,12 @@ export default {
 </script>
 
 <template>
-  <img
-    :src="`./img/shared/desktop/circles-line.svg`"
-    alt="decorative"
-    class="circles-line"
-  />
   <div class="how-it-works-steps-container">
     <div v-for="step in steps" :key="step.numb" class="how-it-works-card">
+      <div class="line-circle-container">
+        <div class="circle"></div>
+        <div v-if="step.numb < 3" class="line"></div>
+      </div>
       <h3 class="how-it-works-numb">{{ step.numb }}</h3>
       <h4 class="how-it-works-title">{{ step.title }}</h4>
       <p class="how-it-works-copy">{{ step.copy }}</p>
@@ -29,22 +28,53 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.circles-line {
+$tablet-gap: 0.62rem;
+$desktop-gap: 5.94rem;
+$circle-size-tablet: 1.5rem;
+$circle-size-desktop: 1.625rem;
+
+.line-circle-container {
   display: none;
 
   @include tablet-breakpoint {
     display: block;
-    width: 72.25%;
     margin-bottom: 3rem;
   }
 
   @include desktop-breakpoint {
-    display: flex;
-    width: 77.75%;
+    margin-bottom: 4rem;
+  }
+}
+
+.circle {
+  @include tablet-breakpoint {
+    background-color: transparent;
+    border-radius: 50%;
+    border: 2px solid $dark-cyan;
+    height: $circle-size-tablet;
+    width: $circle-size-tablet;
   }
 
-  @media only screen and (min-width: 1900px) {
-    width: 75%;
+  @include desktop-breakpoint {
+    height: $circle-size-desktop;
+    width: $circle-size-desktop;
+  }
+}
+
+.line {
+  @include tablet-breakpoint {
+    background-color: $pale-orange;
+    height: 2px;
+    width: calc(100% + $tablet-gap - $circle-size-tablet);
+    position: relative;
+    left: $circle-size-tablet;
+    top: calc($circle-size-tablet / -2);
+  }
+
+  @include desktop-breakpoint {
+    width: calc(100% + $desktop-gap - $circle-size-desktop);
+    left: $circle-size-desktop;
+    top: calc($circle-size-desktop / -2);
   }
 }
 
@@ -52,11 +82,11 @@ export default {
   @include tablet-breakpoint {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.62rem;
+    grid-gap: $tablet-gap;
   }
 
   @include desktop-breakpoint {
-    grid-gap: 5.94rem;
+    grid-gap: $desktop-gap;
   }
 }
 
@@ -79,7 +109,6 @@ export default {
 
 .how-it-works-title {
   @include header-3;
-  /* force text to wrap to two lines */
   max-width: 14rem;
   margin: auto auto 1.5rem auto;
 

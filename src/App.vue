@@ -26,6 +26,11 @@ export default {
 body {
   background-color: $light-cream;
   color: $dark-grey-blue;
+
+  @include large-desktop-breakpoint {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 }
 
 main {
