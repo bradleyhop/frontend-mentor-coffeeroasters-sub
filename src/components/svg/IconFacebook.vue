@@ -16,13 +16,3 @@ export default {
     />
   </svg>
 </template>
-
-<style lang="scss" scoped>
-.fb-icon {
-  fill: $light-cream;
-
-  &:hover {
-    fill: $pale-orange;
-  }
-}
-</style>
