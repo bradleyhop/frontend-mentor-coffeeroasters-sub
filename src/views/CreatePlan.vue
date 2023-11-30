@@ -5,8 +5,6 @@ import planSelectionsData from '@/assets/data/planSelections.js';
 import Accordian from '@/assets/js/Accordian.js';
 // summary paragraph text
 import OrderSummary from '@/components/blocks/OrderSummary.vue';
-// app button for checkout
-import AppButton from '@/components/ui/AppButton.vue';
 // checkout modal
 import CheckoutModal from '@/components/modals/CheckoutModal.vue';
 // cart stores
@@ -18,7 +16,6 @@ export default {
   name: 'CreatePlan',
 
   components: {
-    AppButton,
     HowItWorksCards,
     OrderSummary,
     CheckoutModal,
@@ -287,17 +284,19 @@ export default {
 
         <section class="summary-container">
           <h2 class="summary-title">ORDER SUMMARY</h2>
+
           <OrderSummary />
         </section>
 
         <p class="checkout-btn-container">
-          <AppButton
-            class="checkout-btn"
-            text="Create My Plan!"
+          <button
+            class="app-button checkout-btn"
             id="CheckoutBtn"
             :disabled="checkoutBtnDisabled"
             @click="showModal = true"
-          />
+          >
+            Create My Plan!
+          </button>
 
           <Teleport to="body">
             <CheckoutModal :show="showModal" @close="showModal = !showModal" />

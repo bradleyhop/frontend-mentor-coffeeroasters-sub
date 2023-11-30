@@ -6,8 +6,6 @@
 
 // order summary text
 import OrderSummary from '@/components/blocks/OrderSummary.vue';
-// app button for checkout
-import AppButton from '@/components/ui/AppButton.vue';
 // cart stores
 import { useCustomerPlan } from '@/stores/customerPlan.js';
 
@@ -16,7 +14,6 @@ export default {
 
   components: {
     OrderSummary,
-    AppButton,
   },
 
   data() {
@@ -52,18 +49,21 @@ export default {
         </div>
 
         <div class="modal-checkout-button-container">
-          <AppButton
-            :text="`Checkout - &dollar;${customerPlan.plan.totalCost.toFixed(
-              2,
-            )} / mo`"
+          <button
             @click="$emit('close')"
-            class="modal-checkout-button"
-          />
+            class="app-button modal-checkout-button"
+          >
+            {{
+              `Checkout - &dollar;${customerPlan.plan.totalCost.toFixed(
+                2,
+              )} / mo`
+            }}
+          </button>
           <div class="modal-checkout-container">
             <p class="total-cost">
               &dollar;{{ customerPlan.plan.totalCost.toFixed(2) }} / mo
             </p>
-            <AppButton text="Checkout" @click="$emit('close')" />
+            <button class="app-button" @click="$emit('close')">Checkout</button>
           </div>
         </div>
       </div>
