@@ -1,5 +1,4 @@
 <script>
-import AppButton from '@/components/ui/AppButton.vue';
 // coffee collection as list; more prone to future changes
 import coffees from '@/assets/data/coffeeCollection.js';
 // how it works steps block
@@ -9,7 +8,6 @@ export default {
   name: 'HomeView',
 
   components: {
-    AppButton,
     HowItWorksCards,
   },
 
@@ -72,8 +70,8 @@ export default {
           your door, at your schedule.
         </p>
         <div class="call-to-action-button-container">
-          <RouterLink to="/createplan" v-slot="{ navigate }">
-            <AppButton text="Create your plan" @click="navigate" role="link" />
+          <RouterLink to="/createplan" class="app-button">
+            Create your plan
           </RouterLink>
         </div>
       </div>
@@ -140,14 +138,11 @@ export default {
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
       <HowItWorksCards />
-      <RouterLink to="/createplan" v-slot="{ navigate }">
-        <AppButton
-          text="Create your plan"
-          class="how-it-works-button"
-          @click="navigate"
-          role="link"
-        />
-      </RouterLink>
+      <div class="how-it-works-button-container">
+        <RouterLink to="/createplan" class="app-button">
+          Create your plan
+        </RouterLink>
+      </div>
     </section>
   </div>
 </template>
@@ -482,13 +477,17 @@ export default {
   }
 }
 
+/*
+ * TODO: remove duplication; see main.scss
+ */
+
 .how-it-works-heading {
   @include header-2;
   color: $grey;
   margin-bottom: 5rem;
 }
 
-.how-it-works-button {
+.how-it-works-button-container {
   margin-top: 2.5rem;
 
   @include desktop-breakpoint {
