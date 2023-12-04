@@ -80,21 +80,23 @@ export default {
 
     // toggle disabled attribute when all choices are made
     toggleDisabled() {
+      const thisPlan = this.customerPlan.plan;
+
       if (
         // do not check for 'grind' property if user selects 'Capsule'
-        this.customerPlan.plan.how === 'Capsule' &&
-        this.customerPlan.plan.type &&
-        this.customerPlan.plan.size &&
-        this.customerPlan.plan.frequency
+        thisPlan.how === 'Capsule' &&
+        thisPlan.type &&
+        thisPlan.size &&
+        thisPlan.frequency
       ) {
         this.checkoutBtnDisabled = false;
       } else if (
         // check for all properties
-        this.customerPlan.plan.how &&
-        this.customerPlan.plan.type &&
-        this.customerPlan.plan.size &&
-        this.customerPlan.plan.grind &&
-        this.customerPlan.plan.frequency
+        thisPlan.how &&
+        thisPlan.type &&
+        thisPlan.size &&
+        thisPlan.grind &&
+        thisPlan.frequency
       ) {
         this.checkoutBtnDisabled = false;
       } else {

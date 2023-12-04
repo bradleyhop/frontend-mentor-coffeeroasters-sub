@@ -477,14 +477,14 @@ export default {
   }
 }
 
-/*
- * TODO: remove duplication; see main.scss
- */
-
 .how-it-works-heading {
   @include header-2;
   color: $grey;
   margin-bottom: 5rem;
+
+  @include tablet-breakpoint {
+    font-size: 1.5rem;
+  }
 }
 
 .how-it-works-button-container {

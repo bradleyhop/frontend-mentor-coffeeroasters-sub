@@ -30,8 +30,7 @@ export default {
 <style lang="scss" scoped>
 $tablet-gap: 0.62rem;
 $desktop-gap: 5.94rem;
-$circle-size-tablet: 1.5rem;
-$circle-size-desktop: 1.625rem;
+$circle-size: 1.9375rem;
 
 .line-circle-container {
   display: none;
@@ -51,13 +50,8 @@ $circle-size-desktop: 1.625rem;
     background-color: transparent;
     border-radius: 50%;
     border: 2px solid $dark-cyan;
-    height: $circle-size-tablet;
-    width: $circle-size-tablet;
-  }
-
-  @include desktop-breakpoint {
-    height: $circle-size-desktop;
-    width: $circle-size-desktop;
+    height: $circle-size;
+    width: $circle-size;
   }
 }
 
@@ -65,16 +59,14 @@ $circle-size-desktop: 1.625rem;
   @include tablet-breakpoint {
     background-color: $pale-orange;
     height: 2px;
-    width: calc(100% + $tablet-gap - $circle-size-tablet);
+    width: calc(100% + $tablet-gap - $circle-size);
     position: relative;
-    left: $circle-size-tablet;
-    top: calc($circle-size-tablet / -2);
+    left: $circle-size;
+    top: calc($circle-size / -2);
   }
 
   @include desktop-breakpoint {
-    width: calc(100% + $desktop-gap - $circle-size-desktop);
-    left: $circle-size-desktop;
-    top: calc($circle-size-desktop / -2);
+    width: calc(100% + $desktop-gap - $circle-size);
   }
 }
 
