@@ -16,46 +16,70 @@ export default {
 </script>
 
 <template>
-  <footer class="footer-container">
-    <div class="footer-logo-container">
-      <img
-        :src="`./img/shared/desktop/logo-white-text.svg`"
-        class="footer-logo"
-        alt="logo"
-      />
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo-container">
+        <img
+          :src="`./img/shared/desktop/logo-white-text.svg`"
+          class="footer-logo"
+          alt="logo"
+        />
+      </div>
+      <div class="footer-nav-container">
+        <RouterLink to="/" class="footer-nav-link"> HOME </RouterLink>
+        <RouterLink to="/about" class="footer-nav-link"> ABOUT </RouterLink>
+        <RouterLink to="/createplan" class="footer-nav-link"
+          >CREATE YOUR PLAN
+        </RouterLink>
+      </div>
+      <div class="footer-socials-container">
+        <a
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noreferrer nofollow"
+          aria-label="Facebook"
+        >
+          <IconFacebook class="footer-social-link" />
+        </a>
+        <a
+          href="https://www.twitter.com/"
+          target="_blank"
+          rel="noreferrer nofollow"
+          aria-label="Twitter"
+        >
+          <IconTwitter class="footer-social-link" />
+        </a>
+        <a
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noreferrer nofollow"
+          aria-label="Instagram"
+        >
+          <IconInsta class="footer-social-link" />
+        </a>
+      </div>
     </div>
-    <div class="footer-nav-container">
-      <RouterLink to="/" class="footer-nav-link"> HOME </RouterLink>
-      <RouterLink to="/about" class="footer-nav-link"> ABOUT </RouterLink>
-      <RouterLink to="/createplan" class="footer-nav-link"
-        >CREATE YOUR PLAN
-      </RouterLink>
-    </div>
-    <div class="footer-socials-container">
-      <a
-        href="https://www.facebook.com/"
-        target="_blank"
-        rel="noreferrer nofollow"
-        aria-label="Facebook"
-      >
-        <IconFacebook class="footer-social-link" />
-      </a>
-      <a
-        href="https://www.twitter.com/"
-        target="_blank"
-        rel="noreferrer nofollow"
-        aria-label="Twitter"
-      >
-        <IconTwitter class="footer-social-link" />
-      </a>
-      <a
-        href="https://www.instagram.com/"
-        target="_blank"
-        rel="noreferrer nofollow"
-        aria-label="Instagram"
-      >
-        <IconInsta class="footer-social-link" />
-      </a>
+
+    <div class="attribution">
+      <div class="att-container">
+        Challenge by
+        <a
+          href="https://www.frontendmentor.io/solutions/coffee-subscription-site-using-vuejs-e_YtQBmo65"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Frontend Mentor</a
+        >
+        <span class="att-separator">|</span>
+      </div>
+      <div class="att-container">
+        Code by
+        <a
+          href="https://bradleysmith.tech"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Bradley Smith</a
+        >
+      </div>
     </div>
   </footer>
 </template>
@@ -70,7 +94,7 @@ export default {
   border: 0.5px solid transparent;
 
   @include desktop-breakpoint {
-    margin: 0 5rem 5.5rem 5rem;
+    margin: 0 5rem 1rem 5rem;
     display: flex;
     align-items: center;
   }
@@ -149,5 +173,34 @@ export default {
   &:hover {
     fill: $pale-orange;
   }
+}
+
+.attribution {
+  font-size: 1rem;
+  font-family: 'Barlow', sans-serif;
+  line-height: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+
+  & a {
+    color: $dark-cyan;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include tablet-breakpoint {
+    font-size: 1.5rem;
+    flex-direction: row;
+    margin-bottom: 5.5rem;
+  }
+}
+
+.att-separator {
+  padding: 0 0.5rem;
 }
 </style>

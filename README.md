@@ -69,9 +69,12 @@ The designs show these differences, so you can refer to them to get an idea of w
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
+- Open Graph Meta Tags
+- GitHub Pages
 - [Vue.js](https://vuejs.org/) - Vue.js framework
 - [Vite.js](https://vitejs.dev/) - Vite.js bundler
 - [Vite-plugin-vue-router](https://github.com/bradleyhop/vite-plugin-vue-router) - vite-plugin-vue-router
+- [Pinia](https://pinia.vuejs.org/) - Pinia state management library
 - [VueUse](https://github.com/vueuse/vueuse) - vueuse, for local storage
 
 ## Author
