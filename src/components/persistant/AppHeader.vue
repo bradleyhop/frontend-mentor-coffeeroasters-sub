@@ -44,6 +44,14 @@ export default {
   }
 }
 
+.mobile-nav {
+  display: block;
+
+  @include tablet-breakpoint {
+    display: none;
+  }
+}
+
 .list-nav-container {
   display: none;
 
@@ -57,14 +65,6 @@ export default {
 
   @include tablet-breakpoint {
     height: 1.625rem;
-  }
-}
-
-.mobile-nav {
-  display: block;
-
-  @include tablet-breakpoint {
-    display: none;
   }
 }
 </style>
