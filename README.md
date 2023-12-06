@@ -13,10 +13,15 @@ This is a solution to the [Coffeeroasters subscription site challenge on Fronten
 
 ## Overview
 
+This project is built with [Vue.js](https://vuejs.org/) and
+[Vite.js](https://vitejs.dev/). [VueRouter](https://router.vuejs.org/) is used
+for page navigation. Pinia stores the user's selections so that they can be
+accessed across pages.
+
 ### Links
 
-- Solution URL: [GitHub repo](https://github.com/bradleyhop/frontend-mentor-coffeeroasters-sub)
 - Live Site URL: [Via GitHub Pages](https://bradleyhop.github.io/frontend-mentor-coffeeroasters-sub/#/)
+- Solution URL: [GitHub repo](https://github.com/bradleyhop/frontend-mentor-coffeeroasters-sub)
 
 ### The challenge
 

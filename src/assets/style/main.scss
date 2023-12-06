@@ -1,27 +1,8 @@
+@import './mixin'; // load mixins first!
 @import './typography';
 @import './color';
+@import './hero';
 @import './app-button';
-
-/*
- * Device breakpoints
- */
-@mixin tablet-breakpoint {
-  @media only screen and (min-width: 768px) {
-    @content;
-  }
-}
-
-@mixin desktop-breakpoint {
-  @media only screen and (min-width: 1200px) {
-    @content;
-  }
-}
-
-@mixin large-desktop-breakpoint {
-  @media only screen and (min-width: 1400px) {
-    @content;
-  }
-}
 
 /*
  * Base styling
@@ -38,6 +19,7 @@ body {
 
 main {
   margin: 0rem 1.5rem;
+  min-height: 100vh;
 
   @include tablet-breakpoint {
     margin: 0rem 2.5rem;
@@ -45,50 +27,5 @@ main {
 
   @include desktop-breakpoint {
     margin: 0rem 5rem;
-  }
-}
-
-/*
- * Styling for the hero section of pages
- */
-.hero-container {
-  border-radius: 0.625rem;
-  text-align: center;
-  background-color: #a2a2a2;
-  margin: 2.5rem 0 7.5rem 0;
-  min-height: 31.25rem;
-  display: grid;
-
-  /* displays content over image */
-  & > * {
-    grid-column: 1 / 1;
-    grid-row: 1 / 1;
-  }
-
-  @include desktop-breakpoint {
-    min-height: 37.5rem;
-    margin-bottom: 8.5rem;
-  }
-}
-
-.hero-img {
-  border-radius: 0.625rem;
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
-
-.hero-content-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  @include tablet-breakpoint {
-    text-align: left;
-    padding-left: 3rem;
-  }
-
-  @include desktop-breakpoint {
-    padding-left: 5.31rem;
   }
 }

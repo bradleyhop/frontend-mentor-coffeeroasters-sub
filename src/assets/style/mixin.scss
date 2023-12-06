@@ -1,0 +1,21 @@
+/*
+ * Device breakpoints
+ */
+@mixin tablet-breakpoint {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop-breakpoint {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin large-desktop-breakpoint {
+  @media only screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
