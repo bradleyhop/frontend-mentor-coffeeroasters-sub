@@ -201,6 +201,11 @@ export default {
 }
 
 .att-separator {
-  padding: 0 0.5rem;
+  display: none;
+
+  @include tablet-breakpoint {
+    display: inline-block;
+    padding: 0 0.5rem;
+  }
 }
 </style>

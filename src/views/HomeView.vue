@@ -1,6 +1,4 @@
 <script>
-// coffee collection as list; more prone to future changes
-import coffees from '@/assets/data/coffeeCollection.js';
 // how it works steps block
 import HowItWorksCards from '@/components/blocks/HowItWorksCards.vue';
 
@@ -13,21 +11,49 @@ export default {
 
   data() {
     return {
-      coffeCollection: Object.freeze(coffees),
+      coffeCollection: Object.freeze([
+        {
+          id: 0,
+          name: 'Gran Espresso',
+          copy: 'Light and flavorful blend with cocoa and black pepper for an intense experience.',
+          src: 'image-gran-espresso.png',
+        },
+        {
+          id: 1,
+          name: 'Planalto',
+          copy: 'Brazilian dark roast with rich and velvety body, and hints of fruits and nuts.',
+          src: 'image-planalto.png',
+        },
+        {
+          id: 2,
+          name: 'Piccollo',
+          copy: 'Mild and smooth blend featuring notes of toasted almond and dried cherry.',
+          src: 'image-piccollo.png',
+        },
+        {
+          id: 3,
+          name: 'Danche',
+          copy: 'Ethiopian hand-harvested blend densely packed with vibrant fruit notes.',
+          src: 'image-danche.png',
+        },
+      ]),
       // why us card content
       benefits: Object.freeze([
         {
           img: 'icon-coffee-bean.svg',
+          id: 0,
           title: 'Best quality',
           copy: 'Discover an endless variety of the world’s best artisan coffee from each of our roasters.',
         },
         {
           img: 'icon-gift.svg',
+          id: 1,
           title: 'Exclusive benefits',
           copy: 'Special offers and swag when you subscribe, including 30% off your first shipment.',
         },
         {
           img: 'icon-truck.svg',
+          id: 2,
           title: 'Free shipping',
           copy: 'We cover the cost and coffee is delivered fast. Peak freshness: guaranteed.',
         },
@@ -70,7 +96,7 @@ export default {
           your door, at your schedule.
         </p>
         <div class="call-to-action-button-container">
-          <RouterLink to="/createplan" class="app-button">
+          <RouterLink to="/createplan" class="app-button" role="button">
             Create your plan
           </RouterLink>
         </div>
@@ -115,7 +141,7 @@ export default {
           <div class="benefit-card-container">
             <div
               v-for="benefit in benefits"
-              :key="benefit.title"
+              :key="benefit.id"
               class="benefit-card"
             >
               <div class="benefit-img-container">
@@ -137,9 +163,11 @@ export default {
 
     <section class="how-it-works-container">
       <h2 class="how-it-works-heading">How it works</h2>
+
       <HowItWorksCards />
+
       <div class="how-it-works-button-container">
-        <RouterLink to="/createplan" class="app-button">
+        <RouterLink to="/createplan" class="app-button" role="button">
           Create your plan
         </RouterLink>
       </div>

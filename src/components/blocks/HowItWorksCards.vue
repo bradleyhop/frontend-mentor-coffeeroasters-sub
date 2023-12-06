@@ -1,13 +1,26 @@
 <script>
-// how it works steps copy
-import howItWorks from '@/assets/data/howItWorks.js';
-
 export default {
   name: 'HowItWorksCards',
 
   data() {
     return {
-      steps: Object.freeze(howItWorks),
+      steps: Object.freeze([
+        {
+          numb: '01',
+          title: 'Pick your coffee',
+          copy: 'Select from our evolving range of artisan coffees. Our beans are ethically sourced and we pay fair prices for them. There are new coffees in all profiles every month for you to try out.',
+        },
+        {
+          numb: '02',
+          title: 'Choose the frequency',
+          copy: 'Customize your order frequency, quantity, even your roast style and grind type. Pause, skip or cancel your subscription with no commitment through our online portal.',
+        },
+        {
+          numb: '03',
+          title: 'Receive and enjoy!',
+          copy: 'We ship your package within 48 hours, freshly roasted. Sit back and enjoy award-winning world-class coffees curated to provide a distinct tasting experience.',
+        },
+      ]),
     };
   },
 };
@@ -18,7 +31,7 @@ export default {
     <div v-for="step in steps" :key="step.numb" class="how-it-works-card">
       <div class="line-circle-container">
         <div class="circle"></div>
-        <div v-if="step.numb < 3" class="line"></div>
+        <div v-if="Number(step.numb) < 3" class="line"></div>
       </div>
       <h3 class="how-it-works-numb">{{ step.numb }}</h3>
       <h4 class="how-it-works-title">{{ step.title }}</h4>

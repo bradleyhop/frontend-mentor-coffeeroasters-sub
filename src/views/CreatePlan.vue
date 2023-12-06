@@ -106,8 +106,9 @@ export default {
     },
 
     /*
-     * <a href> isn't jumping to #id (maybe because of being parallel to the menu and
-     * inside a grid?), so using JS to make the jump; used in desktop viewport
+     * <a href> isn't jumping to #id (maybe because of being parallel to the
+     * menu and inside a grid?), so using JS to make the jump; used in desktop
+     * viewport
      */
     jumpToLink(linky) {
       document.getElementById(linky).scrollIntoView({ behavior: 'smooth' });
@@ -370,8 +371,9 @@ export default {
 
   @include desktop-breakpoint {
     display: grid;
+    justify-items: center;
     grid-template-columns: 1fr 2fr;
-    grid-gap: 14rem;
+    grid-gap: 7.8rem;
   }
 }
 
@@ -380,12 +382,12 @@ export default {
 
   @include desktop-breakpoint {
     display: block;
-    margin-left: 5.31rem;
+    color: rgba(51, 61, 75, 0.4);
     font-family: 'Fraunces 9pt Black', serif;
     font-size: 1.5rem;
     font-weight: 900;
     line-height: 1.33;
-    color: rgba(51, 61, 75, 0.4);
+    min-width: 15.9375rem;
   }
 }
 
