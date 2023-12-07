@@ -11,7 +11,8 @@ export const useCustomerPlan = defineStore('customerPlan', {
         grind: '',
         delivery: '',
         frequency: '',
-        // index 0: weekly; 1: bi-weekly; 2: monthly; using an array for v-for rendering
+        // costs key: index 0: weekly; 1: bi-weekly; 2: monthly
+        // using an array for v-for rendering
         costs: [],
         totalCost: 0,
       },

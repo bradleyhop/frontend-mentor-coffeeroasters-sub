@@ -172,6 +172,7 @@ export default {
 
   &:hover {
     fill: $pale-orange;
+    transition: fill 0.2s ease-in-out;
   }
 }
 

@@ -260,7 +260,7 @@ export default {
               <div
                 v-for="plan in selection.selections"
                 :key="plan.id"
-                class="select-plan-selection-container"
+                class="select-plan-option-card"
                 :class="{ activeChoice: plan.isSelected }"
                 :value="plan.cost"
                 @click="
@@ -311,6 +311,8 @@ export default {
 </template>
 
 <style lang="scss">
+$transition-macro: all 0.2s ease-in-out;
+
 .plan-hero-conatiner {
   @include tablet-breakpoint {
     min-height: 25rem;
@@ -441,6 +443,10 @@ export default {
   user-select: none;
 }
 
+.select-plan-details[open] .arrow-icon {
+  transform: rotate(180deg);
+}
+
 .disableSelection {
   cursor: not-allowed;
   user-select: none; /* prevents text selection */
@@ -494,11 +500,7 @@ export default {
   }
 }
 
-.select-plan-details[open] .arrow-icon {
-  transform: rotate(180deg);
-}
-
-.select-plan-selection-container {
+.select-plan-option-card {
   background-color: $selection-grey;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
@@ -509,6 +511,7 @@ export default {
     background-color: $pale-orange;
     color: $dark-grey-blue;
     cursor: pointer;
+    transition: $transition-macro;
   }
 
   @include tablet-breakpoint {
@@ -519,6 +522,7 @@ export default {
 .activeChoice {
   background-color: $dark-cyan;
   color: $white;
+  transition: $transition-macro;
 
   /* override unselected hover */
   &:hover {
