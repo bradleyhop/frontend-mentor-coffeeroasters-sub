@@ -110,7 +110,7 @@ export default {
       <div class="coffee-card-container">
         <div
           v-for="coffee in coffeCollection"
-          :key="coffee.name"
+          :key="coffee.id"
           class="coffee-card"
         >
           <div class="coffee-img-container">
