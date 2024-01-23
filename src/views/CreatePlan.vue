@@ -212,8 +212,8 @@ export default {
       <HowItWorksCards />
     </section>
 
+    <!-- Floating Menu for desktop viewport -->
     <section class="select-plan-container">
-      <!-- tbh, this submenu is a mess of a design; like, why? -->
       <div class="question-container">
         <div class="question-sticky-container">
           <div
@@ -224,16 +224,9 @@ export default {
             @click="jumpToLink(question.link)"
             title="jump to selection choice"
           >
-            <span
-              class="question-numb-menu"
-              :class="{ questionSelected: question.isSelected }"
-              >{{ question.numb }}</span
-            >&nbsp;
-            <span
-              class="question-title-menu"
-              :class="{ questionSelected: question.isSelected }"
-              >{{ question.title }}</span
-            >
+            <span class="question-numb-menu">{{ question.numb }}</span>
+            &nbsp;
+            <span class="question-title-menu">{{ question.title }}</span>
           </div>
         </div>
       </div>
@@ -287,7 +280,6 @@ export default {
 
         <section class="summary-container">
           <h2 class="summary-title">ORDER SUMMARY</h2>
-
           <OrderSummary />
         </section>
 
@@ -574,5 +566,9 @@ $transition-macro: all 0.2s ease-in-out;
   @include desktop-breakpoint {
     float: right;
   }
+}
+
+.active-number {
+  color: red;
 }
 </style>
